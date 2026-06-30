@@ -1,0 +1,41 @@
+<header class="site-header" id="siteHeader">
+    <div class="container">
+        <nav class="nav-shell" aria-label="Primary">
+            <a href="/" class="brand" aria-label="Canvas Print home">
+                <span class="brand-mark" data-icon="sparkles"></span>
+                <span>Canvas<span style="color:var(--tomato)">.</span></span>
+            </a>
+
+            <div class="nav-links" data-nav></div>
+
+            <div class="nav-actions">
+                <div class="lang-toggle" role="group" aria-label="Language">
+                    <button type="button" data-lang="en">EN</button>
+                    <button type="button" data-lang="bn">বাং</button>
+                </div>
+                <button class="icon-btn theme-toggle" id="themeToggle" type="button" data-i18n-attr="common.theme:aria-label">
+                    <span data-icon="moon" class="icon-moon"></span>
+                    <span data-icon="sun" class="icon-sun"></span>
+                </button>
+                <a href="/quote.html" class="btn btn-primary btn-sm nav-cta"><span data-i18n="common.getQuote"></span> <span data-icon="arrow-right"></span></a>
+                <button class="icon-btn menu-btn" id="menuOpen" type="button" data-i18n-attr="common.menu:aria-label" aria-expanded="false">
+                    <span data-icon="menu"></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="container" style="display:flex;flex-direction:column;flex:1;padding-inline:0;">
+        <div class="mobile-menu-head">
+            <a href="/" class="brand"><span class="brand-mark" data-icon="sparkles"></span> Canvas<span style="color:var(--tomato)">.</span></a>
+            <button class="icon-btn" id="menuClose" type="button" data-i18n-attr="common.close:aria-label"><span data-icon="x"></span></button>
+        </div>
+        <nav class="mobile-links" aria-label="Mobile" data-nav-mobile></nav>
+        <div class="mobile-foot">
+            <a href="/quote.html" class="btn btn-primary btn-block btn-lg"><span data-i18n="common.getQuote"></span> <span data-icon="arrow-right"></span></a>
+            <a href="#" data-wa class="btn btn-accent btn-block"><span data-icon="whatsapp"></span> WhatsApp</a>
+        </div>
+    </div>
+</div>

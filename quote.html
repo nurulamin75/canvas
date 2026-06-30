@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get a Quote — Canvas Print</title>
+    <meta name="description" content="Request a free, itemised printing quote from Canvas Print. Share your project details and we'll respond within hours.">
+    <link rel="canonical" href="https://canvasprintbd.com/quote.html">
+    <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#1a3a2e">
+    <script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Text:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+</head>
+<body>
+<a href="#main" class="sr-only">Skip to content</a>
+<div data-include="/partials/header.html"></div>
+
+<main id="main">
+    <section class="page-header">
+        <div class="container">
+            <div class="reveal">
+                <span class="eyebrow" data-i18n="quote.eyebrow"></span>
+                <h1 class="h1 text-balance" data-i18n="quote.pageTitle"></h1>
+                <p class="lede" data-i18n="quote.pageDesc"></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section--tight">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="reveal">
+                    <div class="panel panel-pad" style="background:var(--forest);color:#fff;">
+                        <h2 class="h3" style="color:#fff;" data-i18n="quote.whyTitle"></h2>
+                        <p style="color:rgba(255,255,255,0.78);margin:14px 0 22px;" data-i18n="quote.whyText"></p>
+                        <ul class="price-feats" data-render="quote-perks" style="margin:0;"></ul>
+                    </div>
+                </div>
+
+                <div class="panel panel-pad reveal" data-delay="1">
+                    <form data-ajax data-multistep action="/forms/quote.php" method="post" enctype="multipart/form-data" novalidate>
+                        <input type="text" name="website" tabindex="-1" autocomplete="off" class="sr-only" aria-hidden="true">
+                        <div class="steps-head">
+                            <div class="step-pill active"><span class="n">1</span><span class="txt" data-i18n="quote.step1"></span></div>
+                            <div class="step-pill"><span class="n">2</span><span class="txt" data-i18n="quote.step2"></span></div>
+                            <div class="step-pill"><span class="n">3</span><span class="txt" data-i18n="quote.step3"></span></div>
+                        </div>
+                        <div class="form-step active">
+                            <div class="form-grid cols-2">
+                                <div class="field"><label for="q-name" data-i18n="quote.name"></label><input type="text" id="q-name" name="name" required><span class="error-text">Required</span></div>
+                                <div class="field"><label for="q-phone" data-i18n="quote.phone"></label><input type="tel" id="q-phone" name="phone" required><span class="error-text">Required</span></div>
+                                <div class="field"><label for="q-email" data-i18n="quote.email"></label><input type="email" id="q-email" name="email" required><span class="error-text">Valid email required</span></div>
+                                <div class="field"><label for="q-company"><span data-i18n="quote.company"></span> <span class="opt">(<span data-i18n="quote.optional"></span>)</span></label><input type="text" id="q-company" name="company"></div>
+                            </div>
+                            <div class="step-actions">
+                                <span></span>
+                                <button type="button" class="btn btn-primary" data-next-step><span data-i18n="common.continue"></span> <span data-icon="arrow-right"></span></button>
+                            </div>
+                        </div>
+
+                        <div class="form-step">
+                            <div class="form-grid cols-2">
+                                <div class="field"><label for="q-type" data-i18n="quote.printingType"></label><select id="q-type" name="printing_type" required data-render="service-options"></select><span class="error-text">Required</span></div>
+                                <div class="field"><label for="q-qty" data-i18n="quote.quantity"></label><input type="number" id="q-qty" name="quantity" min="1" required><span class="error-text">Required</span></div>
+                                <div class="field"><label for="q-paper" data-i18n="quote.paperType"></label><input type="text" id="q-paper" name="paper_type"></div>
+                                <div class="field"><label for="q-size" data-i18n="quote.size"></label><input type="text" id="q-size" name="size"></div>
+                            </div>
+                            <div class="step-actions">
+                                <button type="button" class="btn btn-secondary" data-prev-step><span data-i18n="common.back"></span></button>
+                                <button type="button" class="btn btn-primary" data-next-step><span data-i18n="common.continue"></span> <span data-icon="arrow-right"></span></button>
+                            </div>
+                        </div>
+
+                        <div class="form-step">
+                            <div class="form-grid cols-2">
+                                <div class="field"><label for="q-finish" data-i18n="quote.finishing"></label><input type="text" id="q-finish" name="finishing"></div>
+                                <div class="field"><label for="q-date" data-i18n="quote.deliveryDate"></label><input type="date" id="q-date" name="delivery_date"></div>
+                                <div class="field col-span"><label for="q-upload"><span data-i18n="quote.upload"></span> <span class="opt">(<span data-i18n="quote.optional"></span>)</span></label><input type="file" id="q-upload" name="artwork" accept=".pdf,.ai,.psd,.png,.jpg,.jpeg"><span class="opt" style="font-size:0.8rem;color:var(--ink-3);" data-i18n="quote.uploadHint"></span></div>
+                                <div class="field col-span"><label for="q-message"><span data-i18n="quote.message"></span> <span class="opt">(<span data-i18n="quote.optional"></span>)</span></label><textarea id="q-message" name="message"></textarea></div>
+                            </div>
+                            <div class="step-actions">
+                                <button type="button" class="btn btn-secondary" data-prev-step><span data-i18n="common.back"></span></button>
+                                <button type="submit" class="btn btn-primary"><span data-i18n="common.submitRequest"></span> <span data-icon="check"></span></button>
+                            </div>
+                        </div>
+                        <p class="form-msg" role="status" style="margin-top:12px;font-size:0.9rem;"></p>
+                    </form>
+
+                    <div class="success-panel" data-success style="display:none;">
+                        <div class="success-icon" data-icon="check"></div>
+                        <h2 class="h3" data-i18n="quote.successTitle"></h2>
+                        <p class="muted" style="margin-top:10px;" data-i18n="quote.successText"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div data-include="/partials/footer.html"></div>
+<script src="/assets/js/i18n.js" defer></script>
+<script src="/assets/js/data.js" defer></script>
+<script src="/assets/js/artwork.js" defer></script>
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

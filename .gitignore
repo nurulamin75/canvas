@@ -1,0 +1,10 @@
+# Local tooling (portable PHP binary used for previewing)
+.tooling/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+
+# Form uploads (if you choose to persist them server-side)
+forms/uploads/
