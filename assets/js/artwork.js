@@ -50,11 +50,11 @@
     }
 
     const PALETTES = {
-        card: ["#1A3A2E", "#D4F75A"], flyer: ["#EA5B3A", "#FFD9CE"], brochure: ["#2563EB", "#DCE6FF"],
-        stationery: ["#1A3A2E", "#F0EAD6"], packaging: ["#B5651D", "#F3E0C7"], banner: ["#EA5B3A", "#1A3A2E"],
-        sticker: ["#7C3AED", "#EDE0FF"], calendar: ["#0E7490", "#CFF5FA"], notebook: ["#1A3A2E", "#D4F75A"],
-        idcard: ["#2563EB", "#F0EAD6"], menu: ["#9A3412", "#FFE6C7"], invitation: ["#9D174D", "#FBD5E4"],
-        certificate: ["#1A3A2E", "#F0EAD6"], poster: ["#EA5B3A", "#D4F75A"]
+        card: ["#111113", "#f5f5f7"], flyer: ["#EA5B3A", "#FFD9CE"], brochure: ["#2563EB", "#DCE6FF"],
+        stationery: ["#111113", "#f0ede6"], packaging: ["#B5651D", "#F3E0C7"], banner: ["#EA5B3A", "#111113"],
+        sticker: ["#7C3AED", "#EDE0FF"], calendar: ["#0E7490", "#CFF5FA"], notebook: ["#111113", "#f5f5f7"],
+        idcard: ["#2563EB", "#f0ede6"], menu: ["#9A3412", "#FFE6C7"], invitation: ["#9D174D", "#FBD5E4"],
+        certificate: ["#111113", "#f0ede6"], poster: ["#EA5B3A", "#f5f5f7"]
     };
 
     function hash(str) {
@@ -147,7 +147,7 @@
     function artwork(kind, title, cls) {
         cls = cls || "artwork";
         title = title || kind;
-        const pal = PALETTES[kind] || ["#1A3A2E", "#D4F75A"];
+        const pal = PALETTES[kind] || ["#111113", "#f5f5f7"];
         const ink = pal[0], accent = pal[1];
         const id = kind + "-" + hash(kind + title);
         return '<svg class="' + cls + '" viewBox="0 0 400 360" role="img" aria-label="' + title +

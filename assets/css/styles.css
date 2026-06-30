@@ -11,8 +11,8 @@
     /* Brand accents (shared across themes) */
     --tomato: #ea5b3a;
     --tomato-soft: #ffd9ce;
-    --lime: #d4f75a;
-    --forest: #1a3a2e;
+    --lime: #f5f5f7;
+    --forest: #111113;
     --blue: #2563eb;
     --blue-soft: #dce6ff;
 
@@ -92,7 +92,7 @@ ul { list-style: none; padding: 0; }
     border-radius: 4px;
 }
 
-::selection { background: var(--lime); color: var(--forest); }
+::selection { background: var(--forest); color: var(--lime); }
 
 /* ---------------------------- Layout ---------------------------- */
 .container {
@@ -156,9 +156,9 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height
 }
 
 .highlight {
-    background: var(--lime);
-    color: var(--forest);
-    padding: 0 0.18em;
+    background: var(--forest);
+    color: #ffffff;
+    padding: 0.04em 0.22em;
     border-radius: 8px;
     box-decoration-break: clone;
 }
@@ -206,7 +206,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height
 .btn-secondary { background: var(--panel); color: var(--ink); border-color: var(--border-strong); }
 .btn-secondary:hover { border-color: var(--ink); transform: translateY(-2px); }
 
-.btn-accent { background: var(--lime); color: var(--forest); }
+.btn-accent { background: var(--tomato); color: #ffffff; }
 .btn-accent:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 
 .btn-ghost { color: var(--ink); padding-inline: 8px; }

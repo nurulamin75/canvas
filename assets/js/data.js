@@ -87,13 +87,13 @@
           description: { en: "Custom product packaging, mono cartons, and gift boxes with die-cutting, lamination, and structural design support.", bn: "ডাই-কাটিং, ল্যামিনেশন ও স্ট্রাকচারাল ডিজাইনসহ কাস্টম প্যাকেজিং, মনো কার্টন ও গিফট বক্স।" },
           features: ["Custom die-cut", "Mono cartons", "Lamination & foiling", "Structural design help"] },
 
-        { slug: "roll-up-banners", kind: "banner", priceFrom: "৳1,800", home: true,
+        { slug: "roll-up-banners", kind: "banner", priceFrom: "৳1,800", home: false,
           name: { en: "Roll-up Banners", bn: "রোল-আপ ব্যানার" },
           tagline: { en: "Portable, premium, presentation-ready.", bn: "বহনযোগ্য, প্রিমিয়াম, উপস্থাপনার জন্য প্রস্তুত।" },
           description: { en: "Retractable roll-up stands with high-resolution prints, ideal for exhibitions, storefronts, and events.", bn: "উচ্চ-রেজোলিউশন প্রিন্টসহ রিট্র্যাক্টেবল রোল-আপ স্ট্যান্ড, প্রদর্শনী ও ইভেন্টের জন্য আদর্শ।" },
           features: ["80×200 cm standard", "Premium PET film", "Aluminium stand included", "Carry bag"] },
 
-        { slug: "pvc-banners", kind: "banner", priceFrom: "৳40", home: true,
+        { slug: "pvc-banners", kind: "banner", priceFrom: "৳40", home: false,
           name: { en: "PVC Banners", bn: "PVC ব্যানার" },
           tagline: { en: "Built for the outdoors.", bn: "বাইরের পরিবেশের জন্য তৈরি।" },
           description: { en: "Weather-resistant large-format PVC banners with eyelets and reinforced hemming for any outdoor campaign.", bn: "আইলেট ও শক্তিশালী হেমিংসহ আবহাওয়া-প্রতিরোধী বড় আকারের PVC ব্যানার।" },
@@ -180,7 +180,15 @@
         { name: "Rakib Chowdhury", role: { en: "Operations, Green Agro", bn: "অপারেশনস, গ্রিন এগ্রো" }, rating: 5,
           quote: { en: "Reliable, affordable, and genuinely helpful. They suggested a better stock for our packaging that saved cost without losing quality.", bn: "নির্ভরযোগ্য, সাশ্রয়ী এবং সত্যিই সহায়ক। তারা আমাদের প্যাকেজিংয়ের জন্য ভালো স্টক সুপারিশ করেছে যা মান না কমিয়ে খরচ বাঁচিয়েছে।" } },
         { name: "Farzana Akter", role: { en: "Principal, Bright Academy", bn: "অধ্যক্ষ, ব্রাইট একাডেমি" }, rating: 5,
-          quote: { en: "Certificates, ID cards, and calendars — all handled in one order and delivered early. Professional from start to finish.", bn: "সার্টিফিকেট, আইডি কার্ড ও ক্যালেন্ডার — সব এক অর্ডারে এবং আগেভাগে ডেলিভারি। শুরু থেকে শেষ পর্যন্ত পেশাদার।" } }
+          quote: { en: "Certificates, ID cards, and calendars — all handled in one order and delivered early. Professional from start to finish.", bn: "সার্টিফিকেট, আইডি কার্ড ও ক্যালেন্ডার — সব এক অর্ডারে এবং আগেভাগে ডেলিভারি। শুরু থেকে শেষ পর্যন্ত পেশাদার।" } },
+        { name: "Mahmudul Karim", role: { en: "Director, Surma Foods", bn: "পরিচালক, সুরমা ফুডস" }, rating: 5,
+          quote: { en: "The label printing for our entire product line was spot on. Consistent colours across hundreds of SKUs and not a single reprint needed.", bn: "আমাদের পুরো প্রোডাক্ট লাইনের লেবেল প্রিন্ট একদম নিখুঁত। শত শত SKU জুড়ে সামঞ্জস্যপূর্ণ রঙ আর একবারও পুনঃপ্রিন্ট লাগেনি।" } },
+        { name: "Shahana Begum", role: { en: "Wedding Planner", bn: "ওয়েডিং প্ল্যানার" }, rating: 5,
+          quote: { en: "Every invitation set I've ordered has been gorgeous. The foil work and paper quality make my clients feel truly special.", bn: "আমার অর্ডার করা প্রতিটি নিমন্ত্রণপত্র ছিল চমৎকার। ফয়েল কাজ ও কাগজের মান আমার ক্লায়েন্টদের সত্যিই বিশেষ অনুভব করায়।" } },
+        { name: "Arif Mahmood", role: { en: "Co-founder, Green Agro", bn: "সহ-প্রতিষ্ঠাতা, গ্রিন এগ্রো" }, rating: 5,
+          quote: { en: "Their packaging team understood our brand instantly. The cartons are sturdy, beautiful, and arrived exactly when promised.", bn: "তাদের প্যাকেজিং টিম মুহূর্তেই আমাদের ব্র্যান্ড বুঝে নিয়েছে। কার্টনগুলো মজবুত, সুন্দর আর ঠিক সময়মতো পৌঁছেছে।" } },
+        { name: "Tahmina Islam", role: { en: "Manager, Bloom Boutique", bn: "ম্যানেজার, ব্লুম বুটিক" }, rating: 5,
+          quote: { en: "From concept to delivery they handled everything with care. Our new stationery and tags look premium and totally on brand.", bn: "ধারণা থেকে ডেলিভারি পর্যন্ত তারা সব যত্নসহকারে সামলেছে। আমাদের নতুন স্টেশনারি ও ট্যাগ দেখতে প্রিমিয়াম ও ব্র্যান্ডের সাথে মানানসই।" } }
     ];
 
     window.FAQS = [
