@@ -1,4 +1,18 @@
-/* Canvas Print — app bootstrap: includes, i18n, rendering, interactions. */
+/* ===================================================================
+   Canvas Print — main application script
+
+   CONTENTS (search for section name)
+   ────────────────────────────────────────────────────────────────
+   Theme              applyThemeToggle
+   Icons & artwork    fillIcons, fillArt
+   i18n               applyI18n
+   Chrome             renderNav, renderFooter
+   Section render     renderSections, RENDERERS
+   Interactions       menu, dropdown, search, carousel, forms…
+   Shop               bootShop, productCardHTML
+   Product detail     bootProduct
+   Boot               init on DOMContentLoaded
+   =================================================================== */
 (function () {
     "use strict";
 
@@ -138,6 +152,12 @@
             c.innerHTML = `<p>${esc(t("trusted.title"))}</p><div class="trusted-logos">` +
                 window.TRUSTED.map((l) => `<span>${esc(l)}</span>`).join("") + `</div>`;
         },
+        "featured-products"(c) {
+            const all = window.PRODUCTS || [];
+            const featured = all.filter((p) => p.badge === "popular");
+            const list = (featured.length ? featured : all).slice(0, 4);
+            c.innerHTML = list.map(productCardHTML).join("");
+        },
         services(c) {
             let list = window.SERVICES;
             if (c.dataset.home === "true") list = list.filter((s) => s.home);
@@ -155,7 +175,7 @@
             let list = window.PORTFOLIO;
             if (c.dataset.limit) list = list.slice(0, +c.dataset.limit);
             c.innerHTML = list.map((item, i) =>
-                `<a href="/portfolio.html" class="masonry-item reveal" data-delay="${(i % 4) + 1}" style="margin:0;">
+                `<a href="/portfolio.html" class="masonry-item reveal m-0" data-delay="${(i % 4) + 1}">
                     <div class="art">${artwork(item.kind, L(item.title))}</div>
                     <div class="ov"><span class="cat">${esc(item.category)}</span><h3>${esc(L(item.title))}</h3></div></a>`).join("");
         },
@@ -187,13 +207,13 @@
                 `<div class="service-block${i % 2 ? " flip" : ""} reveal" id="${s.slug}">
                     <div class="art-wrap">${artwork(s.kind, L(s.name))}</div>
                     <div>
-                        <h2 class="h2" style="margin:0 0 10px;">${esc(L(s.name))}</h2>
-                        <p class="tagline" style="margin-bottom:14px;">${esc(L(s.tagline))}</p>
+                        <h2 class="h2 mb-3">${esc(L(s.name))}</h2>
+                        <p class="tagline mb-4">${esc(L(s.tagline))}</p>
                         <p class="muted">${esc(L(s.description))}</p>
                         <ul class="service-feats">${s.features.map((f) => `<li><span class="ico">${icon("check")}</span> ${esc(f)}</li>`).join("")}</ul>
-                        <div class="flex gap-md wrap" style="margin-top:24px;align-items:center;">
+                        <div class="flex gap-md wrap items-center mt-6">
                             <a href="/quote.html" class="btn btn-primary">${esc(t("common.getQuote"))} ${icon("arrow-right")}</a>
-                            <span class="price" style="font-family:var(--font-display);font-weight:700;font-size:1.4rem;">${esc(t("common.from"))} ${esc(s.priceFrom)}</span>
+                            <span class="price">${esc(t("common.from"))} ${esc(s.priceFrom)}</span>
                         </div></div></div>`).join("");
         },
         portfolio(c) {
@@ -211,7 +231,7 @@
                     ${p.featured ? `<span class="featured-badge">${esc(t("pricing.mostPopular"))}</span>` : ""}
                     <h3 class="h3">${esc(L(p.name))}</h3>
                     <div class="price-tag">${esc(p.price)}</div>
-                    <p class="muted" style="margin-bottom:6px;">${esc(L(p.description))}</p>
+                    <p class="muted mb-2">${esc(L(p.description))}</p>
                     <ul class="price-feats">${L(p.features).map((f) => `<li><span class="ico">${icon("check")}</span> ${esc(f)}</li>`).join("")}</ul>
                     <a href="/quote.html" class="btn ${p.featured ? "btn-accent" : "btn-primary"} btn-block">${esc(t("common." + p.cta))}</a>
                 </div>`).join("");
@@ -683,7 +703,7 @@
         const p = products.find((x) => x.slug === slug);
 
         if (!p) {
-            wrap.innerHTML = `<div class="section-inner" style="text-align:center;padding:80px 0;">
+            wrap.innerHTML = `<div class="section-inner text-center py-10">
                 <p class="muted">Product not found. <a href="/shop.html">${esc(t("common.backToShop"))}</a></p></div>`;
             return;
         }
@@ -794,7 +814,7 @@
                     <input type="hidden" name="variant" id="formVariant" value="${esc(L(p.variants[0].label))}">
                     <input type="hidden" name="option" id="formOption" value="${getOptionLabel()}">
                     <input type="hidden" name="price" id="formPrice" value="৳${p.variants[0].price.toLocaleString()}">
-                    <input type="text" name="_hp" style="display:none;" tabindex="-1" autocomplete="off">
+                    <input type="text" name="_hp" class="hidden" tabindex="-1" autocomplete="off">
                     <div class="field">
                         <label for="f-name">${esc(t("common.yourName"))} *</label>
                         <input id="f-name" type="text" name="name" required autocomplete="name">
@@ -803,23 +823,23 @@
                         <label for="f-phone">${esc(t("common.yourPhone"))} *</label>
                         <input id="f-phone" type="tel" name="phone" required autocomplete="tel">
                     </div>
-                    <div class="field" style="grid-column:1/-1;">
+                    <div class="field col-span-full">
                         <label for="f-address">${esc(t("common.yourAddress"))} *</label>
                         <input id="f-address" type="text" name="address" required autocomplete="street-address">
                     </div>
-                    <div class="field" style="grid-column:1/-1;">
+                    <div class="field col-span-full">
                         <label for="f-notes">${esc(t("common.orderNotes"))}</label>
                         <textarea id="f-notes" name="notes" rows="3"></textarea>
                     </div>
-                    <div style="grid-column:1/-1;">
+                    <div class="col-span-full">
                         <button type="submit" class="btn btn-primary btn-lg">${esc(t("common.placeOrder"))} ${icon("arrow-right")}</button>
                         <p class="form-msg" aria-live="polite"></p>
                     </div>
                 </form>
-                <div class="success-panel" data-success style="display:none;text-align:center;padding:40px 0;">
+                <div class="success-panel hidden text-center py-8" data-success>
                     <div class="success-icon" data-icon="check-circle"></div>
                     <h3>${esc(t("common.orderSuccess"))}</h3>
-                    <a href="/shop.html" class="btn btn-primary" style="margin-top:20px;">${esc(t("common.backToShop"))}</a>
+                    <a href="/shop.html" class="btn btn-primary mt-5">${esc(t("common.backToShop"))}</a>
                 </div>
             </div>
         </div>

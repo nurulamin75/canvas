@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/styles.css">
     <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
 </head>
 <body>
 <a href="#main" class="sr-only">Skip to content</a>
@@ -34,12 +35,12 @@
             <div class="contact-grid">
                 <div class="reveal">
                     <div data-render="contact-details"></div>
-                    <a href="#" data-wa class="btn btn-accent btn-lg" style="margin-top:24px;"><span data-icon="whatsapp"></span> <span data-i18n="contact.whatsappChat"></span></a>
-                    <div class="map-stub"><span data-icon="map-pin"></span> <span data-i18n="contact.mapNote" style="margin-left:8px;"></span></div>
+                    <a href="#" data-wa class="btn btn-accent btn-lg mt-6"><span data-icon="whatsapp"></span> <span data-i18n="contact.whatsappChat"></span></a>
+                    <div class="map-stub"><span data-icon="map-pin"></span> <span class="ml-2" data-i18n="contact.mapNote"></span></div>
                 </div>
 
                 <div class="panel panel-pad reveal" data-delay="1">
-                    <h2 class="h3" style="margin-bottom:22px;" data-i18n="contact.formTitle"></h2>
+                    <h2 class="h3 mb-6" data-i18n="contact.formTitle"></h2>
                     <form data-ajax action="/forms/contact.php" method="post" novalidate>
                         <input type="text" name="website" tabindex="-1" autocomplete="off" class="sr-only" aria-hidden="true">
                         <div class="form-grid cols-2">
@@ -64,13 +65,13 @@
                                 <span class="error-text">Required</span>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-top:22px;"><span data-i18n="common.sendMessage"></span> <span data-icon="arrow-right"></span></button>
-                        <p class="form-msg" role="status" style="margin-top:12px;font-size:0.9rem;"></p>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block mt-6"><span data-i18n="common.sendMessage"></span> <span data-icon="arrow-right"></span></button>
+                        <p class="form-msg mt-3 text-sm" role="status"></p>
                     </form>
-                    <div class="success-panel" data-success style="display:none;">
+                    <div class="success-panel hidden" data-success>
                         <div class="success-icon" data-icon="check"></div>
                         <h2 class="h3" data-i18n="contact.successTitle"></h2>
-                        <p class="muted" style="margin-top:10px;" data-i18n="contact.successText"></p>
+                        <p class="muted mt-3" data-i18n="contact.successText"></p>
                     </div>
                 </div>
             </div>

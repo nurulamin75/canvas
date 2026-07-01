@@ -1,4 +1,9 @@
-/* Canvas Print — client-side i18n dictionary (English + Bangla). */
+/* ===================================================================
+   Canvas Print — translations (English + Bangla)
+
+   Keys match data-i18n="section.key" attributes in HTML.
+   Add a key here first, then reference it in markup or data.js.
+   =================================================================== */
 window.TRANSLATIONS = {
     en: {
         nav: { home: "Home", company: "Company", about: "About", services: "Services", shop: "Shop", portfolio: "Portfolio", pricing: "Pricing", faq: "FAQ", contact: "Contact" },
@@ -21,13 +26,17 @@ window.TRANSLATIONS = {
             categoryPage: "Page", categoryService: "Service", categoryProduct: "Product"
         },
         hero: {
-            badge: "Premium printing in Sunamganj, Bangladesh",
-            titleA: "Professional", titleHighlight: "printing", titleB: "made simple.",
+            badge: "Professional printing made simple",
+            titleA: "Premium Printing for", titleHighlight: "Every", titleB: "Business",
             subtitle: "High-quality printing services for businesses, events, and personal projects across Bangladesh — from business cards to large-format banners.",
             trusted: "Trusted by 1,200+ clients across Bangladesh"
         },
         stats: { years: "Years of experience", projects: "Projects delivered", clients: "Happy clients", turnaround: "Average turnaround" },
         trusted: { title: "Trusted by brands & businesses across Bangladesh" },
+        featured: {
+            title: "Popular picks from the shop.",
+            description: "Order online in a few clicks — pick a quantity, choose your finish, and pay cash on delivery."
+        },
         services: {
             eyebrow: "What we print", title: "Print solutions for every need.",
             description: "From everyday essentials to standout marketing materials, all produced to a premium standard.",
@@ -164,13 +173,17 @@ window.TRANSLATIONS = {
             categoryPage: "পেজ", categoryService: "সেবা", categoryProduct: "পণ্য"
         },
         hero: {
-            badge: "সুনামগঞ্জ, বাংলাদেশে প্রিমিয়াম প্রিন্টিং",
-            titleA: "পেশাদার", titleHighlight: "প্রিন্টিং", titleB: "সহজভাবে।",
+            badge: "বাংলাদেশে প্রিমিয়াম প্রিন্টিং",
+            titleA: "ব্র্যান্ডকে তুলে ধরুন ", titleHighlight: "প্রিমিয়াম", titleB: "  প্রিন্টিংয়ে",
             subtitle: "বাংলাদেশজুড়ে ব্যবসা, অনুষ্ঠান ও ব্যক্তিগত প্রকল্পের জন্য উচ্চমানের প্রিন্টিং সেবা — বিজনেস কার্ড থেকে বড় আকারের ব্যানার পর্যন্ত।",
             trusted: "বাংলাদেশজুড়ে ১,২০০+ গ্রাহকের আস্থা"
         },
         stats: { years: "বছরের অভিজ্ঞতা", projects: "সম্পন্ন প্রকল্প", clients: "সন্তুষ্ট গ্রাহক", turnaround: "গড় সময়" },
         trusted: { title: "বাংলাদেশজুড়ে ব্র্যান্ড ও ব্যবসার আস্থা" },
+        featured: {
+            title: "শপ থেকে জনপ্রিয় পণ্য।",
+            description: "কয়েক ক্লিকে অনলাইনে অর্ডার করুন — পরিমাণ বেছে নিন, ফিনিশ নির্বাচন করুন, এবং ক্যাশ অন ডেলিভারিতে পেমেন্ট করুন।"
+        },
         services: {
             eyebrow: "আমরা যা প্রিন্ট করি", title: "প্রতিটি প্রয়োজনে প্রিন্ট সমাধান।",
             description: "প্রতিদিনের প্রয়োজনীয় জিনিস থেকে আকর্ষণীয় মার্কেটিং উপকরণ — সবই প্রিমিয়াম মানে তৈরি।",

@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/styles.css">
     <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
 </head>
 <body>
 <a href="#main" class="sr-only">Skip to content</a>
@@ -29,15 +30,17 @@
         </div>
     </section>
 
-    <section class="section--tight"><div class="container"><div data-render="stats"></div></div></section>
+    <section class="section--tight section--flush"><div class="container"><div data-render="stats"></div></div></section>
+
+    <section class="section--tight"><div class="container trusted reveal" data-render="trusted"></div></section>
 
     <section class="section">
         <div class="container">
             <div class="service-block">
                 <div class="art-wrap reveal" data-art="brochure"></div>
                 <div class="reveal" data-delay="1">
-                    <h2 class="h2 text-balance" style="margin:14px 0 18px;" data-i18n="about.storyTitle"></h2>
-                    <p class="muted" style="margin-bottom:16px;" data-i18n="about.story1"></p>
+                    <h2 class="h2 text-balance mt-3 mb-4" data-i18n="about.storyTitle"></h2>
+                    <p class="muted mb-4" data-i18n="about.story1"></p>
                     <p class="muted" data-i18n="about.story2"></p>
                 </div>
             </div>
@@ -47,19 +50,19 @@
     <section class="section--tight">
         <div class="container">
             <div class="grid grid-3">
-                <div class="card reveal" data-delay="1" style="padding:32px;">
+                <div class="card reveal p-7" data-delay="1">
                     <div class="why-ico" data-icon="zap"></div>
-                    <h3 class="h3" style="margin-bottom:10px;" data-i18n="about.mission"></h3>
+                    <h3 class="h3 mb-3" data-i18n="about.mission"></h3>
                     <p class="muted" data-i18n="about.missionText"></p>
                 </div>
-                <div class="card reveal" data-delay="2" style="padding:32px;">
+                <div class="card reveal p-7" data-delay="2">
                     <div class="why-ico" data-icon="sparkles"></div>
-                    <h3 class="h3" style="margin-bottom:10px;" data-i18n="about.vision"></h3>
+                    <h3 class="h3 mb-3" data-i18n="about.vision"></h3>
                     <p class="muted" data-i18n="about.visionText"></p>
                 </div>
-                <div class="card reveal" data-delay="3" style="padding:32px;">
+                <div class="card reveal p-7" data-delay="3">
                     <div class="why-ico" data-icon="shield"></div>
-                    <h3 class="h3" style="margin-bottom:10px;" data-i18n="about.promise"></h3>
+                    <h3 class="h3 mb-3" data-i18n="about.promise"></h3>
                     <p class="muted" data-i18n="about.promiseText"></p>
                 </div>
             </div>

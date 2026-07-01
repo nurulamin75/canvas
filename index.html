@@ -19,6 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/styles.css">
     <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/utilities.css">
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"LocalBusiness","name":"Canvas Print","url":"https://canvasprintbd.com","telephone":"+8801700000000","email":"hello@canvasprintbd.com","address":{"@type":"PostalAddress","streetAddress":"Jamalganj","addressLocality":"Sunamganj","addressRegion":"Sylhet","addressCountry":"BD"},"priceRange":"৳৳"}
     </script>
@@ -33,7 +34,7 @@
             <span class="badge reveal"><span class="dot"></span><span data-i18n="hero.badge"></span></span>
             <div class="hero-grid">
                 <h1 class="h-hero hero-title reveal" data-delay="1">
-                    <span data-i18n="hero.titleA"></span> <em class="highlight" data-i18n="hero.titleHighlight"></em><br><span data-i18n="hero.titleB"></span>
+                    <span data-i18n="hero.titleA"></span> <em class="highlight" data-i18n="hero.titleHighlight"></em><span data-i18n="hero.titleB"></span>
                 </h1>
                 <div class="hero-side reveal" data-delay="2">
                     <p class="lede" data-i18n="hero.subtitle"></p>
@@ -43,13 +44,13 @@
                     </div>
                 </div>
             </div>
-            <div class="hero-visual reveal" data-delay="3">
+            <div class="hero-visual overflow-hidden reveal" data-delay="3">
                 <img src="/assets/img/hero-img.png" alt="Canvas Print — premium quality printing" loading="eager" class="hero-img">
                 <div class="hero-visual-cap">
                     <span class="hero-trust">
                         <span class="avatar-row" aria-hidden="true">
-                            <span style="background:var(--tomato)">H</span><span style="background:var(--forest)">S</span>
-                            <span style="background:var(--blue)">G</span><span style="background:#9d174d">B</span>
+                            <span class="bg-tomato">H</span><span class="bg-forest">S</span>
+                            <span class="bg-blue">G</span><span class="bg-pink">B</span>
                         </span>
                         <span data-i18n="hero.trusted"></span>
                     </span>
@@ -59,9 +60,18 @@
         </div>
     </section>
 
-    <section class="section--tight section--flush"><div class="container"><div data-render="stats"></div></div></section>
-
-    <section class="section--tight"><div class="container trusted reveal" data-render="trusted"></div></section>
+    <section class="section">
+        <div class="container">
+            <div class="section-head center">
+                <h2 class="h2 text-balance" data-i18n="featured.title"></h2>
+                <p class="lede" data-i18n="featured.description"></p>
+            </div>
+            <div class="product-grid" data-render="featured-products"></div>
+            <div class="text-center mt-lg">
+                <a href="/shop.html" class="btn btn-secondary btn-lg"><span data-i18n="common.browseShop"></span> <span data-icon="arrow-right"></span></a>
+            </div>
+        </div>
+    </section>
 
     <section class="section">
         <div class="container">
@@ -129,7 +139,7 @@
     <section class="section">
         <div class="container">
             <div class="faq-grid">
-                <div class="section-head" style="margin-bottom:0;">
+                <div class="section-head mb-0">
                     <h2 class="h2 text-balance" data-i18n="faq.title"></h2>
                     <p class="lede" data-i18n="faq.description"></p>
                 </div>

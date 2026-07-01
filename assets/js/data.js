@@ -1,4 +1,22 @@
-/* Canvas Print — site data (structure + localized content). */
+/* ===================================================================
+   Canvas Print — site data
+
+   Edit content here. Keys map to i18n labels where noted.
+   Localized strings use { en: "...", bn: "..." } objects.
+
+   CONTENTS
+   ────────────────────────────────────────────────────────────────
+   SITE               Contact info, hours, social links
+   NAV                Header navigation
+   STATS / TRUSTED    About page counters & client names
+   SERVICES           Service catalogue
+   PORTFOLIO          Work samples + filter categories
+   TESTIMONIALS       Review quotes
+   FAQS               Question / answer pairs
+   PRICING            Plan cards + price table
+   PRODUCTS           Shop catalogue (variants, prices)
+   FOOTER_GROUPS      Footer link columns
+   =================================================================== */
 (function () {
     "use strict";
 
@@ -25,6 +43,7 @@
         ]
     };
 
+    /* ── Navigation ── */
     window.NAV = [
         { key: "home", href: "/" },
         { key: "company", children: [
@@ -38,6 +57,7 @@
         { key: "contact", href: "/contact.html" }
     ];
 
+    /* ── About page: stats & trusted logos ── */
     window.STATS = [
         { value: 12, suffix: "+", key: "years" },
         { value: 8500, suffix: "+", key: "projects" },
@@ -47,6 +67,7 @@
 
     window.TRUSTED = ["Haor Cafe", "Sylhet Tech", "Green Agro", "Bloom Boutique", "Bright Academy", "Surma Foods"];
 
+    /* ── Services (home + services page) ── */
     window.SERVICES = [
         { slug: "business-cards", kind: "card", priceFrom: "৳400", home: true,
           name: { en: "Business Cards", bn: "বিজনেস কার্ড" },
@@ -151,6 +172,7 @@
           features: ["Dedicated project lead", "Material sourcing", "Prototyping", "Any quantity"] }
     ];
 
+    /* ── Portfolio ── */
     window.PORTFOLIO = [
         { title: { en: "Haor Cafe Menu", bn: "হাওর ক্যাফে মেনু" }, category: "Branding", kind: "menu" },
         { title: { en: "Sylhet Tech Cards", bn: "সিলেট টেক কার্ড" }, category: "Business", kind: "card" },
@@ -171,6 +193,7 @@
 
     window.PORTFOLIO_CATEGORIES = ["All", "Business", "Corporate", "Events", "Packaging", "Branding", "Marketing"];
 
+    /* ── Testimonials ── */
     window.TESTIMONIALS = [
         { name: "Tanvir Ahmed", role: { en: "Founder, Haor Cafe", bn: "প্রতিষ্ঠাতা, হাওর ক্যাফে" }, rating: 5,
           quote: { en: "Canvas Print redid our entire menu and packaging. The soft-touch finish on the boxes genuinely lifted how customers see our brand. Flawless.", bn: "Canvas Print আমাদের পুরো মেনু ও প্যাকেজিং নতুন করে তৈরি করেছে। বক্সের সফট-টাচ ফিনিশ আমাদের ব্র্যান্ডের চেহারাই বদলে দিয়েছে। নিখুঁত।" } },
@@ -194,6 +217,7 @@
           quote: { en: "From concept to delivery they handled everything with care. Our new stationery and tags look premium and totally on brand.", bn: "ধারণা থেকে ডেলিভারি পর্যন্ত তারা সব যত্নসহকারে সামলেছে। আমাদের নতুন স্টেশনারি ও ট্যাগ দেখতে প্রিমিয়াম ও ব্র্যান্ডের সাথে মানানসই।" } }
     ];
 
+    /* ── FAQ ── */
     window.FAQS = [
         { q: { en: "What file formats do you accept for printing?", bn: "প্রিন্টিংয়ের জন্য কোন ফাইল ফরম্যাট গ্রহণ করেন?" },
           a: { en: "We recommend print-ready PDFs, but we also accept AI, PSD, PNG, and JPG files. For the sharpest results, supply files at 300 DPI with a 3 mm bleed.", bn: "আমরা প্রিন্ট-রেডি PDF সুপারিশ করি, তবে AI, PSD, PNG ও JPG ফাইলও গ্রহণ করি। সেরা ফলাফলের জন্য ৩০০ DPI ও ৩ মিমি ব্লিডসহ ফাইল দিন।" } },
@@ -213,6 +237,7 @@
           a: { en: "Your satisfaction is guaranteed. If a finished product doesn’t match the approved proof due to our fault, we reprint it free of charge.", bn: "আপনার সন্তুষ্টি নিশ্চিত। আমাদের ত্রুটির কারণে অনুমোদিত প্রুফের সাথে না মিললে আমরা বিনামূল্যে পুনরায় প্রিন্ট করি।" } }
     ];
 
+    /* ── Pricing ── */
     window.PRICING = [
         { name: { en: "Starter", bn: "স্টার্টার" }, price: "৳400", featured: false, cta: "getQuote",
           description: { en: "Perfect for individuals and small one-off print jobs.", bn: "ব্যক্তি ও ছোট এককালীন প্রিন্ট কাজের জন্য আদর্শ।" },
@@ -239,6 +264,7 @@
         { product: { en: "Invitation Card", bn: "নিমন্ত্রণ কার্ড" }, spec: { en: "Per card, foil optional", bn: "প্রতি কার্ড, ফয়েল ঐচ্ছিক" }, from: "৳25" }
     ];
 
+    /* ── Shop products ── */
     window.PRODUCT_CATEGORIES = ["all", "cards", "stationery", "marketing", "packaging", "events", "signage"];
 
     window.PRODUCTS = [
@@ -395,7 +421,7 @@
           ]}],
           delivery: { en: "2–4 business days", bn: "২–৪ কার্যদিবস" } },
 
-        { slug: "brochures", category: "marketing", kind: "brochure", badge: null,
+        { slug: "brochures", category: "marketing", kind: "brochure", badge: "popular",
           name: { en: "Brochures", bn: "ব্রোশিওর" },
           tagline: { en: "Tell your story, fold by fold.", bn: "ভাঁজে ভাঁজে আপনার গল্প বলুন।" },
           description: { en: "Bi-fold, tri-fold, and multi-page brochures with precise folding and binding. Perfect for catalogues, company profiles, and event programmes.", bn: "বাই-ফোল্ড, ট্রাই-ফোল্ড ও মাল্টি-পেজ ব্রোশিওর, নিখুঁত ভাঁজ ও বাইন্ডিংসহ।" },
@@ -615,6 +641,7 @@
           delivery: { en: "4–6 business days", bn: "৪–৬ কার্যদিবস" } }
     ];
 
+    /* ── Footer link columns ── */
     window.FOOTER_GROUPS = [
         { titleKey: "company", links: [
             { label: { en: "About", bn: "আমাদের সম্পর্কে" }, href: "/about.html" },
