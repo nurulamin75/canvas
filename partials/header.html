@@ -8,6 +8,9 @@
             <div class="nav-links" data-nav></div>
 
             <div class="nav-actions">
+                <button class="icon-btn search-toggle" id="searchOpen" type="button" data-i18n-attr="common.search:aria-label">
+                    <span data-icon="search"></span>
+                </button>
                 <div class="lang-toggle" role="group" aria-label="Language">
                     <button type="button" data-lang="en">EN</button>
                     <button type="button" data-lang="bn">বাং</button>
@@ -24,6 +27,17 @@
         </nav>
     </div>
 </header>
+
+<div class="search-overlay" id="searchOverlay" aria-hidden="true">
+    <div class="search-panel">
+        <div class="search-panel-head">
+            <span class="search-panel-icon" data-icon="search"></span>
+            <input type="text" id="searchInput" class="search-input" data-i18n-attr="common.searchPlaceholder:placeholder" autocomplete="off">
+            <button class="icon-btn" id="searchClose" type="button" data-i18n-attr="common.close:aria-label"><span data-icon="x"></span></button>
+        </div>
+        <div class="search-results" id="searchResults" data-search-results></div>
+    </div>
+</div>
 
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <div class="container" style="display:flex;flex-direction:column;flex:1;padding-inline:0;">

@@ -63,13 +63,32 @@
     function renderNav() {
         const path = location.pathname.replace(/index\.html$/, "") || "/";
         const isActive = (href) => href === "/" ? path === "/" : path.startsWith(href.replace(".html", ""));
-        const links = window.NAV.map((n) =>
-            `<a href="${n.href}" class="${isActive(n.href) ? "is-active" : ""}">${esc(t("nav." + n.key))}</a>`
-        ).join("");
         const desktop = $("[data-nav]");
         const mobile = $("[data-nav-mobile]");
-        if (desktop) desktop.innerHTML = links;
-        if (mobile) mobile.innerHTML = window.NAV.map((n) => `<a href="${n.href}">${esc(t("nav." + n.key))}</a>`).join("");
+        if (desktop) {
+            desktop.innerHTML = window.NAV.map((n) => {
+                if (n.children) {
+                    const childActive = n.children.some((c) => isActive(c.href));
+                    const items = n.children.map((c) =>
+                        `<a href="${c.href}" class="${isActive(c.href) ? "is-active" : ""}">${esc(t("nav." + c.key))}</a>`
+                    ).join("");
+                    return `<div class="nav-dropdown${childActive ? " is-active" : ""}" data-dropdown>
+                        <button type="button" class="nav-dropdown-trigger" data-dropdown-trigger aria-expanded="false">
+                            <span>${esc(t("nav." + n.key))}</span><span data-icon="chevron-down"></span>
+                        </button>
+                        <div class="nav-dropdown-panel" data-dropdown-panel>${items}</div>
+                    </div>`;
+                }
+                return `<a href="${n.href}" class="${isActive(n.href) ? "is-active" : ""}">${esc(t("nav." + n.key))}</a>`;
+            }).join("");
+            fillIcons(desktop);
+        }
+        if (mobile) {
+            mobile.innerHTML = window.NAV.map((n) => {
+                if (n.children) return n.children.map((c) => `<a href="${c.href}">${esc(t("nav." + c.key))}</a>`).join("");
+                return `<a href="${n.href}">${esc(t("nav." + n.key))}</a>`;
+            }).join("");
+        }
     }
 
     function renderFooter() {
@@ -97,17 +116,16 @@
     }
 
     /* --------------------------- Section render ----------------------- */
-    function serviceCardHTML(s) {
-        return `<a href="/services.html#${s.slug}" class="card service-card reveal">
-            <div class="art">${artwork(s.kind, L(s.name))}</div>
-            <div class="body">
-                <h3>${esc(L(s.name))}</h3>
-                <p class="tagline">${esc(L(s.tagline))}</p>
-                <div class="foot">
-                    <span class="price"><small>${esc(t("common.from"))}</small> ${esc(s.priceFrom)}</span>
-                    <span class="link-arrow">${icon("arrow-up-right")}</span>
-                </div>
-            </div></a>`;
+    function serviceCardHTML(s, i) {
+        return `<a href="/services.html#${s.slug}" class="service-row reveal" data-delay="${((i || 0) % 4) + 1}">
+            <span class="sr-num idx-num">${String((i || 0) + 1).padStart(2, "0")}</span>
+            <span class="sr-art hover-zoom">${artwork(s.kind, L(s.name))}</span>
+            <span class="sr-body">
+                <span class="sr-title">${esc(L(s.name))}</span>
+                <span class="sr-tag">${esc(L(s.tagline))}</span>
+            </span>
+            <span class="sr-price"><small>${esc(t("common.from"))}</small>${esc(s.priceFrom)}</span>
+            <span class="sr-arrow">${icon("arrow-up-right")}</span></a>`;
     }
 
     const RENDERERS = {
@@ -128,7 +146,8 @@
         },
         why(c) {
             c.innerHTML = tlist("why.items").map((item, i) =>
-                `<div class="card why-card reveal" data-delay="${(i % 3) + 1}">
+                `<div class="why-row reveal" data-delay="${(i % 3) + 1}">
+                    <span class="idx-num">${String(i + 1).padStart(2, "0")}</span>
                     <div class="why-ico">${icon(whyIcon(i))}</div>
                     <h3>${esc(item.title)}</h3><p class="muted">${esc(item.description)}</p></div>`).join("");
         },
@@ -142,16 +161,15 @@
         },
         process(c) {
             c.innerHTML = tlist("process.steps").map((step, i) =>
-                `<div class="card process-step reveal" data-delay="${i + 1}">
-                    <div class="num">${String(i + 1).padStart(2, "0")}</div>
+                `<div class="process-step reveal" data-delay="${i + 1}">
+                    <div class="num idx-num">${String(i + 1).padStart(2, "0")}</div>
                     <h3>${esc(step.title)}</h3><p>${esc(step.description)}</p></div>`).join("");
         },
         reviews(c) {
-            const colors = ["var(--tomato)", "var(--forest)", "var(--blue)", "#9d174d", "#0e7490", "#7c3aed"];
             c.innerHTML = window.TESTIMONIALS.map((r, i) =>
-                `<div class="card review-card">${stars(r.rating)}
-                    <p class="quote">“${esc(L(r.quote))}”</p>
-                    <div class="review-author"><span class="ava" style="background:${colors[i % colors.length]}">${esc(r.name[0])}</span>
+                `<div class="review-card">${stars(r.rating)}
+                    <p class="quote">${esc(L(r.quote))}</p>
+                    <div class="review-author"><span class="ava">${esc(r.name[0])}</span>
                     <div><div class="name">${esc(r.name)}</div><div class="role">${esc(L(r.role))}</div></div></div></div>`).join("");
         },
         faq(c) {
@@ -169,8 +187,8 @@
                 `<div class="service-block${i % 2 ? " flip" : ""} reveal" id="${s.slug}">
                     <div class="art-wrap">${artwork(s.kind, L(s.name))}</div>
                     <div>
-                        <span class="eyebrow">${esc(L(s.tagline))}</span>
-                        <h2 class="h2" style="margin:12px 0 14px;">${esc(L(s.name))}</h2>
+                        <h2 class="h2" style="margin:0 0 10px;">${esc(L(s.name))}</h2>
+                        <p class="tagline" style="margin-bottom:14px;">${esc(L(s.tagline))}</p>
                         <p class="muted">${esc(L(s.description))}</p>
                         <ul class="service-feats">${s.features.map((f) => `<li><span class="ico">${icon("check")}</span> ${esc(f)}</li>`).join("")}</ul>
                         <div class="flex gap-md wrap" style="margin-top:24px;align-items:center;">
@@ -189,7 +207,7 @@
         },
         pricing(c) {
             c.innerHTML = window.PRICING.map((p) =>
-                `<div class="card price-card${p.featured ? " featured" : ""}">
+                `<div class="price-card${p.featured ? " featured" : ""}">
                     ${p.featured ? `<span class="featured-badge">${esc(t("pricing.mostPopular"))}</span>` : ""}
                     <h3 class="h3">${esc(L(p.name))}</h3>
                     <div class="price-tag">${esc(p.price)}</div>
@@ -211,9 +229,10 @@
         "about-values"(c) {
             const icons = ["palette", "heart", "clock", "leaf"];
             c.innerHTML = tlist("about.values").map((v, i) =>
-                `<div class="card why-card reveal" data-delay="${i + 1}">
+                `<div class="why-row reveal" data-delay="${i + 1}">
+                    <span class="idx-num">${String(i + 1).padStart(2, "0")}</span>
                     <div class="why-ico">${icon(icons[i % icons.length])}</div>
-                    <h3 style="font-size:1.2rem;">${esc(v.title)}</h3><p class="muted">${esc(v.description)}</p></div>`).join("");
+                    <h3>${esc(v.title)}</h3><p class="muted">${esc(v.description)}</p></div>`).join("");
         },
         "quote-perks"(c) {
             c.innerHTML = tlist("quote.perks").map((p) =>
@@ -253,6 +272,30 @@
         close && close.addEventListener("click", () => setOpen(false));
         $$("a", menu).forEach((a) => a.addEventListener("click", () => setOpen(false)));
         document.addEventListener("keydown", (e) => e.key === "Escape" && setOpen(false));
+    }
+
+    function closeNavDropdowns() {
+        $$(".nav-dropdown.open").forEach((d) => {
+            d.classList.remove("open");
+            d.querySelector("[data-dropdown-trigger]")?.setAttribute("aria-expanded", "false");
+        });
+    }
+
+    function initNavDropdown() {
+        if (document.body.dataset.navDropdownBound) return;
+        document.body.dataset.navDropdownBound = "1";
+        document.addEventListener("click", (e) => {
+            const trigger = e.target.closest("[data-dropdown-trigger]");
+            if (trigger) {
+                const dropdown = trigger.closest("[data-dropdown]");
+                const wasOpen = dropdown.classList.contains("open");
+                closeNavDropdowns();
+                if (!wasOpen) { dropdown.classList.add("open"); trigger.setAttribute("aria-expanded", "true"); }
+                return;
+            }
+            if (!e.target.closest("[data-dropdown]")) closeNavDropdowns();
+        });
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeNavDropdowns(); });
     }
 
     function initHeaderScroll() {
@@ -322,24 +365,99 @@
     function initCarousel() {
         $$("[data-carousel]").forEach((root) => {
             const track = root.querySelector("[data-track]");
+            const dotsWrap = root.querySelector("[data-dots]");
             if (!track || root.dataset.bound) return;
             root.dataset.bound = "1";
-            let index = 0;
+            let page = 0;
             const perView = () => (window.innerWidth >= 760 ? 2 : 1);
-            const maxIndex = () => Math.max(0, track.children.length - perView());
+            const pageCount = () => Math.max(1, Math.ceil(track.children.length / perView()));
+            const renderDots = () => {
+                if (!dotsWrap) return;
+                const count = pageCount();
+                dotsWrap.innerHTML = Array.from({ length: count })
+                    .map((_, i) => `<button type="button" class="carousel-dot" data-dot aria-label="Go to slide ${i + 1}"></button>`)
+                    .join("");
+                $$("[data-dot]", dotsWrap).forEach((dot, i) => dot.addEventListener("click", () => { page = i; update(); }));
+            };
             const update = () => {
-                index = Math.min(index, maxIndex());
+                page = Math.min(page, pageCount() - 1);
                 const card = track.children[0];
                 if (!card) return;
                 const gap = parseFloat(getComputedStyle(track).gap) || 20;
+                const step = card.offsetWidth + gap;
+                const maxOffset = Math.max(0, track.children.length - perView());
+                const offset = Math.min(page * perView(), maxOffset);
                 track.style.transition = "transform 0.5s cubic-bezier(0.2,0.7,0.2,1)";
-                track.style.transform = `translateX(-${(card.offsetWidth + gap) * index}px)`;
+                track.style.transform = `translateX(-${offset * step}px)`;
+                $$("[data-dot]", dotsWrap).forEach((d, i) => d.classList.toggle("is-active", i === page));
             };
-            root.querySelector("[data-prev]")?.addEventListener("click", () => { index = index <= 0 ? maxIndex() : index - 1; update(); });
-            root.querySelector("[data-next]")?.addEventListener("click", () => { index = index >= maxIndex() ? 0 : index + 1; update(); });
-            window.addEventListener("resize", update);
+            root.querySelector("[data-prev]")?.addEventListener("click", () => { page = page <= 0 ? pageCount() - 1 : page - 1; update(); });
+            root.querySelector("[data-next]")?.addEventListener("click", () => { page = page >= pageCount() - 1 ? 0 : page + 1; update(); });
+            window.addEventListener("resize", () => { renderDots(); update(); });
+            renderDots();
             update();
         });
+    }
+
+    function buildSearchIndex() {
+        const index = [];
+        window.NAV.forEach((n) => {
+            if (n.children) {
+                n.children.forEach((c) => index.push({ type: t("common.categoryPage"), label: t("nav." + c.key), href: c.href }));
+            } else if (n.href !== "/") {
+                index.push({ type: t("common.categoryPage"), label: t("nav." + n.key), href: n.href });
+            }
+        });
+        (window.SERVICES || []).forEach((s) =>
+            index.push({ type: t("common.categoryService"), label: L(s.name), sub: L(s.tagline), href: "/services.html#" + s.slug }));
+        (window.PRODUCTS || []).forEach((p) =>
+            index.push({ type: t("common.categoryProduct"), label: L(p.name), sub: L(p.tagline), href: "/product.html?slug=" + p.slug }));
+        return index;
+    }
+
+    function initSearch() {
+        const toggle = $("#searchOpen");
+        const overlay = $("#searchOverlay");
+        const input = $("#searchInput");
+        const closeBtn = $("#searchClose");
+        const resultsEl = $("#searchResults");
+        if (!toggle || !overlay || overlay.dataset.bound) return;
+        overlay.dataset.bound = "1";
+
+        const renderResults = (query) => {
+            const q = query.trim().toLowerCase();
+            const index = buildSearchIndex();
+            const matches = q
+                ? index.filter((item) => item.label.toLowerCase().includes(q) || (item.sub || "").toLowerCase().includes(q))
+                : index.filter((item) => item.type === t("common.categoryPage"));
+            resultsEl.innerHTML = matches.length
+                ? matches.slice(0, 12).map((item) =>
+                    `<a class="search-result" href="${item.href}">
+                        <span class="sr-info"><span class="sr-title">${esc(item.label)}</span>${item.sub ? `<span class="sr-sub">${esc(item.sub)}</span>` : ""}</span>
+                        <span class="sr-type">${esc(item.type)}</span>
+                    </a>`).join("")
+                : `<div class="search-empty">${esc(t("common.searchNoResults"))}</div>`;
+        };
+
+        const open = () => {
+            overlay.classList.add("open");
+            overlay.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+            renderResults("");
+            setTimeout(() => input?.focus(), 60);
+        };
+        const close = () => {
+            overlay.classList.remove("open");
+            overlay.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+            if (input) input.value = "";
+        };
+
+        toggle.addEventListener("click", open);
+        closeBtn?.addEventListener("click", close);
+        overlay.addEventListener("click", (e) => { if (e.target === overlay) close(); });
+        input?.addEventListener("input", (e) => renderResults(e.target.value));
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape" && overlay.classList.contains("open")) close(); });
     }
 
     function initFilter() {
@@ -456,6 +574,7 @@
     function initInteractions() {
         applyThemeToggle();
         initMenu();
+        initNavDropdown();
         initHeaderScroll();
         initAccordion();
         initCarousel();
@@ -465,6 +584,7 @@
         initForms();
         initReveal();
         initCounters();
+        initSearch();
     }
 
     /* ------------------------- Language switching --------------------- */
@@ -495,7 +615,7 @@
     /* ========================== Shop page ============================= */
     function productCardHTML(p) {
         const price = p.variants[0].price;
-        return `<a href="/product.html?slug=${esc(p.slug)}" class="card product-card reveal">
+        return `<a href="/product.html?slug=${esc(p.slug)}" class="product-card reveal">
             <div class="prod-art">${artwork(p.kind || "card", L(p.name))}${p.badge ? `<span class="prod-badge">${esc(t("shop.badge." + p.badge))}</span>` : ""}</div>
             <div class="prod-body">
                 <h3>${esc(L(p.name))}</h3>
@@ -526,7 +646,7 @@
             });
             grid.innerHTML = filtered.length
                 ? filtered.map(productCardHTML).join("")
-                : `<p class="no-products">${esc(t("common.noProducts"))}</p>`;
+                : `<div class="no-products"><span data-icon="search"></span><p>${esc(t("common.noProducts"))}</p></div>`;
             fillArt(grid);
             fillIcons(grid);
             initReveal();
@@ -583,13 +703,19 @@
             }).join(", ");
         }
 
+        function pulseEl(el) {
+            if (!el) return;
+            el.style.transform = "scale(1.15)";
+            setTimeout(() => { el.style.transform = "scale(1)"; }, 180);
+        }
+
         function updatePriceDisplay() {
             const el = $("#priceAmount");
             if (el) el.textContent = "৳" + selectedVariant.price.toLocaleString();
             const sumVariant = $("#sumVariant");
-            if (sumVariant) sumVariant.textContent = L(selectedVariant.label);
+            if (sumVariant) { sumVariant.textContent = L(selectedVariant.label); pulseEl(sumVariant); }
             const sumOption = $("#sumOption");
-            if (sumOption) sumOption.textContent = getOptionLabel();
+            if (sumOption) { sumOption.textContent = getOptionLabel(); pulseEl(sumOption); }
             const formVariant = $("#formVariant");
             if (formVariant) formVariant.value = L(selectedVariant.label);
             const formOption = $("#formOption");
@@ -601,7 +727,9 @@
         const variantHTML = `<div class="variant-group">
             <label>${esc(t("common.selectVariant"))}</label>
             <div class="variant-pills">${p.variants.map((v, i) =>
-                `<button class="variant-pill${i === 0 ? " is-active" : ""}" type="button" data-variant-idx="${i}">${esc(L(v.label))}</button>`
+                `<button class="variant-pill${i === 0 ? " is-active" : ""}" type="button" data-variant-idx="${i}">
+                    <span class="v-label">${esc(L(v.label))}</span><span class="v-price">৳${v.price.toLocaleString()}</span>
+                </button>`
             ).join("")}</div></div>`;
 
         const optionsHTML = p.options.map((opt) =>
@@ -612,11 +740,25 @@
                 ).join("")}</div></div>`
         ).join("");
 
+        const trustHTML = `<div class="trust-row">
+            <div class="trust-item">${icon("map-pin")}<span>${esc(t("common.trustCod"))}</span></div>
+            <div class="trust-item">${icon("clock")}<span>${esc(L(p.delivery))}</span></div>
+            <div class="trust-item">${icon("shield")}<span>${esc(t("common.trustQuality"))}</span></div>
+        </div>`;
+
         wrap.innerHTML = `
-        <div class="section-inner">
-            <a href="/shop.html" class="eyebrow" style="text-decoration:none;margin-bottom:24px;display:inline-flex;align-items:center;gap:6px;">${icon("arrow-left")} <span>${esc(t("common.backToShop"))}</span></a>
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="/shop.html">${esc(t("common.browseShop"))}</a>
+                <span class="sep">/</span>
+                <a href="/shop.html">${esc(t("shop.cats." + p.category))}</a>
+                <span class="sep">/</span>
+                <span class="current">${esc(L(p.name))}</span>
+            </nav>
             <div class="product-detail">
-                <div class="prod-detail-art reveal">${artwork(p.kind || "card", L(p.name))}</div>
+                <div class="prod-detail-art-wrap reveal">
+                    <div class="prod-detail-art">${artwork(p.kind || "card", L(p.name))}</div>
+                </div>
                 <div class="prod-detail-body reveal" data-delay="1">
                     <span class="prod-cat-label">${esc(t("shop.cats." + p.category))}</span>
                     <h1>${esc(L(p.name))}</h1>
@@ -626,13 +768,14 @@
                         `<li><span class="ico">${icon("check")}</span>${esc(f)}</li>`).join("")}</ul>
                     ${variantHTML}
                     ${optionsHTML}
-                    <div class="price-display">
+                    <div class="price-display" id="priceDisplay">
                         <span class="amount" id="priceAmount">৳${p.variants[0].price.toLocaleString()}</span>
                         <div class="price-note">${esc(t("common.orderTotal"))}
                             <span class="delivery-note">${esc(t("common.delivery"))}: ${esc(L(p.delivery))}</span>
                         </div>
                     </div>
-                    <a href="#orderForm" class="btn btn-primary">${esc(t("common.orderNow"))} ${icon("arrow-down")}</a>
+                    <a href="#orderForm" class="btn btn-primary btn-lg" id="orderNowBtn">${esc(t("common.orderNow"))} ${icon("arrow-down")}</a>
+                    ${trustHTML}
                 </div>
             </div>
 
@@ -669,19 +812,31 @@
                         <textarea id="f-notes" name="notes" rows="3"></textarea>
                     </div>
                     <div style="grid-column:1/-1;">
-                        <button type="submit" class="btn btn-primary">${esc(t("common.placeOrder"))} ${icon("arrow-right")}</button>
+                        <button type="submit" class="btn btn-primary btn-lg">${esc(t("common.placeOrder"))} ${icon("arrow-right")}</button>
                         <p class="form-msg" aria-live="polite"></p>
                     </div>
                 </form>
                 <div class="success-panel" data-success style="display:none;text-align:center;padding:40px 0;">
-                    <div data-icon="check-circle" style="color:var(--forest);margin-bottom:12px;"></div>
+                    <div class="success-icon" data-icon="check-circle"></div>
                     <h3>${esc(t("common.orderSuccess"))}</h3>
                     <a href="/shop.html" class="btn btn-primary" style="margin-top:20px;">${esc(t("common.backToShop"))}</a>
                 </div>
             </div>
+        </div>
+        <div class="sticky-buy-bar" id="stickyBuyBar">
+            <div class="sb-price"><span class="label">${esc(t("common.orderTotal"))}</span><span class="amount" id="sbAmount">৳${p.variants[0].price.toLocaleString()}</span></div>
+            <a href="#orderForm" class="btn btn-primary">${esc(t("common.orderNow"))}</a>
         </div>`;
 
         const sumTotal = $("#sumTotal");
+        const sbAmount = $("#sbAmount");
+        const priceAmountEl = $("#priceAmount");
+
+        function pulsePrice() {
+            if (!priceAmountEl) return;
+            priceAmountEl.classList.remove("pop");
+            requestAnimationFrame(() => priceAmountEl.classList.add("pop"));
+        }
 
         wrap.addEventListener("click", (e) => {
             const vp = e.target.closest(".variant-pill");
@@ -689,8 +844,10 @@
                 const idx = +vp.dataset.variantIdx;
                 selectedVariant = p.variants[idx];
                 $$(".variant-pill", wrap).forEach((b) => b.classList.toggle("is-active", b === vp));
-                if (sumTotal) sumTotal.textContent = "৳" + selectedVariant.price.toLocaleString();
+                if (sumTotal) { sumTotal.textContent = "৳" + selectedVariant.price.toLocaleString(); pulseEl(sumTotal); }
+                if (sbAmount) sbAmount.textContent = "৳" + selectedVariant.price.toLocaleString();
                 updatePriceDisplay();
+                pulsePrice();
             }
             const op = e.target.closest(".option-pill");
             if (op) {
@@ -700,6 +857,19 @@
                 updatePriceDisplay();
             }
         });
+
+        /* Sticky mobile buy bar: visible once the inline price box scrolls out of view */
+        const buyBar = $("#stickyBuyBar");
+        const priceDisplay = $("#priceDisplay");
+        if (buyBar && priceDisplay && "IntersectionObserver" in window) {
+            const io = new IntersectionObserver(([entry]) => {
+                buyBar.classList.toggle("is-visible", !entry.isIntersecting && entry.boundingClientRect.top < 0);
+            }, { threshold: 0 });
+            io.observe(priceDisplay);
+        }
+        $$("#stickyBuyBar a, #orderNowBtn").forEach((a) => a.addEventListener("click", () => {
+            setTimeout(() => $("#f-name")?.focus({ preventScroll: true }), 500);
+        }));
 
         fillIcons(wrap);
         fillArt(wrap);
@@ -714,7 +884,10 @@
         await Promise.all(targets.map(async (el) => {
             try {
                 const res = await fetch(el.dataset.include);
-                el.innerHTML = await res.text();
+                const html = await res.text();
+                const tpl = document.createElement("template");
+                tpl.innerHTML = html;
+                el.replaceWith(...tpl.content.childNodes);
             } catch (e) {}
         }));
     }

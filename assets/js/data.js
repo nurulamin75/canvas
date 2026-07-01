@@ -27,12 +27,14 @@
 
     window.NAV = [
         { key: "home", href: "/" },
-        { key: "about", href: "/about.html" },
-        { key: "services", href: "/services.html" },
+        { key: "company", children: [
+            { key: "about", href: "/about.html" },
+            { key: "services", href: "/services.html" },
+            { key: "portfolio", href: "/portfolio.html" },
+            { key: "faq", href: "/faq.html" }
+        ] },
         { key: "shop", href: "/shop.html" },
-        { key: "portfolio", href: "/portfolio.html" },
         { key: "pricing", href: "/pricing.html" },
-        { key: "faq", href: "/faq.html" },
         { key: "contact", href: "/contact.html" }
     ];
 

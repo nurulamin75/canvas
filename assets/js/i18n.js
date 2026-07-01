@@ -1,7 +1,7 @@
 /* Canvas Print — client-side i18n dictionary (English + Bangla). */
 window.TRANSLATIONS = {
     en: {
-        nav: { home: "Home", about: "About", services: "Services", shop: "Shop", portfolio: "Portfolio", pricing: "Pricing", faq: "FAQ", contact: "Contact" },
+        nav: { home: "Home", company: "Company", about: "About", services: "Services", shop: "Shop", portfolio: "Portfolio", pricing: "Pricing", faq: "FAQ", contact: "Contact" },
         common: {
             getQuote: "Get a Quote", viewServices: "View Services", allServices: "All services",
             fullPortfolio: "Full portfolio", contactUs: "Contact Us", requestQuote: "Request a Quote",
@@ -15,7 +15,10 @@ window.TRANSLATIONS = {
             orderSuccess: "Order placed! We'll call you to confirm within a few hours.", orderError: "Something went wrong. Please try again or WhatsApp us.",
             delivery: "Estimated delivery", priceFrom: "Starting from", allCategories: "All",
             viewProduct: "View details", backToShop: "Back to shop", searchProducts: "Search products…",
-            noProducts: "No products found."
+            noProducts: "No products found.",
+            trustCod: "Cash on delivery", trustQuality: "Quality guaranteed",
+            search: "Search", searchPlaceholder: "Search products, services, pages…", searchNoResults: "No results found.",
+            categoryPage: "Page", categoryService: "Service", categoryProduct: "Product"
         },
         hero: {
             badge: "Premium printing in Sunamganj, Bangladesh",
@@ -69,6 +72,7 @@ window.TRANSLATIONS = {
             description: "Everything you need to know about working with Canvas Print.", pageTitle: "Frequently asked questions."
         },
         cta: {
+            eyebrow: "Start a project",
             title: "Let’s print something amazing.",
             description: "Tell us about your project and we’ll send a tailored quote within hours. No commitment, no pressure."
         },
@@ -140,7 +144,7 @@ window.TRANSLATIONS = {
     },
 
     bn: {
-        nav: { home: "হোম", about: "আমাদের সম্পর্কে", services: "সেবা", shop: "শপ", portfolio: "পোর্টফোলিও", pricing: "মূল্য", faq: "জিজ্ঞাসা", contact: "যোগাযোগ" },
+        nav: { home: "হোম", company: "কোম্পানি", about: "আমাদের সম্পর্কে", services: "সেবা", shop: "শপ", portfolio: "পোর্টফোলিও", pricing: "মূল্য", faq: "জিজ্ঞাসা", contact: "যোগাযোগ" },
         common: {
             getQuote: "কোটেশন নিন", viewServices: "সেবা দেখুন", allServices: "সব সেবা",
             fullPortfolio: "পূর্ণ পোর্টফোলিও", contactUs: "যোগাযোগ করুন", requestQuote: "কোটেশন চান",
@@ -154,7 +158,10 @@ window.TRANSLATIONS = {
             orderSuccess: "অর্ডার দেওয়া হয়েছে! আমরা কয়েক ঘণ্টার মধ্যে ফোন করে নিশ্চিত করব।", orderError: "কিছু একটা ঠিক হয়নি। আবার চেষ্টা করুন বা WhatsApp করুন।",
             delivery: "আনুমানিক ডেলিভারি", priceFrom: "শুরুর মূল্য", allCategories: "সব",
             viewProduct: "বিস্তারিত দেখুন", backToShop: "শপে ফিরুন", searchProducts: "পণ্য খুঁজুন…",
-            noProducts: "কোনো পণ্য পাওয়া যায়নি।"
+            noProducts: "কোনো পণ্য পাওয়া যায়নি।",
+            trustCod: "ক্যাশ অন ডেলিভারি", trustQuality: "মান নিশ্চিত",
+            search: "খুঁজুন", searchPlaceholder: "পণ্য, সেবা, পেজ খুঁজুন…", searchNoResults: "কোনো ফলাফল পাওয়া যায়নি।",
+            categoryPage: "পেজ", categoryService: "সেবা", categoryProduct: "পণ্য"
         },
         hero: {
             badge: "সুনামগঞ্জ, বাংলাদেশে প্রিমিয়াম প্রিন্টিং",
@@ -208,6 +215,7 @@ window.TRANSLATIONS = {
             description: "Canvas Print-এর সাথে কাজ করার বিষয়ে যা জানা প্রয়োজন।", pageTitle: "সচরাচর জিজ্ঞাসা।"
         },
         cta: {
+            eyebrow: "প্রকল্প শুরু করুন",
             title: "চলুন দারুণ কিছু প্রিন্ট করি।",
             description: "আপনার প্রকল্প সম্পর্কে জানান, কয়েক ঘণ্টার মধ্যেই আমরা উপযুক্ত কোটেশন পাঠাব। কোনো বাধ্যবাধকতা নেই।"
         },
