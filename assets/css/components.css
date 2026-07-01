@@ -470,20 +470,22 @@
    =================================================================== */
 
 .hero {
-  padding-top: clamp(20px, 3vw, 36px);
+  padding-top: clamp(40px, 5.5vw, 72px);
   padding-bottom: clamp(32px, 4vw, 52px);
 }
 .hero .badge {
-  margin-bottom: 16px;
+  margin-bottom: clamp(20px, 2.5vw, 28px);
 }
 .hero-grid {
   display: grid;
-  gap: clamp(20px, 3vw, 36px);
+  gap: clamp(24px, 4vw, 48px);
   align-items: start;
 }
 @media (min-width: 900px) {
   .hero-grid {
-    grid-template-columns: 1.6fr 1fr;
+    grid-template-columns: 1.45fr minmax(260px, 0.95fr);
+    gap: clamp(48px, 7vw, 96px);
+    align-items: start;
   }
 }
 
@@ -495,15 +497,37 @@
 }
 .hero-side {
   padding-bottom: clamp(4px, 1vw, 10px);
+  min-width: 0;
+}
+@media (min-width: 900px) {
+  .hero-side {
+    justify-self: end;
+    width: 100%;
+    max-width: 380px;
+    padding-bottom: clamp(6px, 1vw, 14px);
+  }
 }
 .hero-side .lede {
   max-width: 380px;
 }
+@media (min-width: 900px) {
+  .hero-side .lede {
+    max-width: none;
+    line-height: 1.65;
+  }
+}
 .hero-cta {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 24px;
+  gap: 10px;
+  margin-top: clamp(20px, 2.5vw, 28px);
+}
+@media (min-width: 900px) {
+  .hero-cta {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+  }
 }
 .hero-trust {
   display: flex;
@@ -1132,10 +1156,16 @@
 .masonry-item .art {
   width: 100%;
 }
-.masonry-item .art svg {
+.masonry-item .art svg,
+.masonry-item .art img {
+  width: 100%;
+  aspect-ratio: 400 / 360;
+  object-fit: cover;
+  display: block;
   transition: transform var(--dur-slow) var(--ease);
 }
-.masonry-item:hover .art svg {
+.masonry-item:hover .art svg,
+.masonry-item:hover .art img {
   transform: scale(1.06);
 }
 .masonry-item .ov {
@@ -1633,17 +1663,57 @@ table.price-table {
   margin-top: 0;
 }
 .footer-cta {
-  text-align: center;
-  max-width: 640px;
-  margin-inline: auto;
-  padding-block: clamp(40px, 5vw, 64px);
+  padding-block: clamp(32px, 4vw, 48px);
 }
-.footer-cta .eyebrow {
-  justify-content: center;
-  margin-bottom: 18px;
+.footer-cta-banner {
+  position: relative;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--panel) 50%, transparent);
+  padding: clamp(28px, 4vw, 40px) clamp(24px, 4vw, 44px);
+  overflow: hidden;
 }
-.footer-cta .btn {
-  margin-top: 30px;
+.footer-cta-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--tomato);
+}
+.footer-cta-banner::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: clamp(36px, 5vw, 56px);
+  height: clamp(36px, 5vw, 56px);
+  border-top: 1px solid var(--border-strong);
+  border-right: 1px solid var(--border-strong);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.footer-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px 32px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.footer-cta-copy {
+  flex: 1 1 auto;
+  min-width: min(100%, 16rem);
+  padding-left: 8px;
+}
+.footer-cta-copy .eyebrow {
+  margin-bottom: 10px;
+}
+.footer-cta-copy h2 {
+  margin: 0;
+  max-width: 18ch;
+}
+.footer-cta .btn-primary {
+  flex-shrink: 0;
 }
 
 .footer-panel {
@@ -1664,10 +1734,6 @@ table.price-table {
     grid-template-columns: 1.6fr 1fr 1fr 1fr 1.5fr;
     gap: 26px;
   }
-}
-.footer-brand .brand {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
 }
 .footer-brand p {
   color: var(--ink-2);

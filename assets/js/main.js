@@ -176,7 +176,7 @@
             if (c.dataset.limit) list = list.slice(0, +c.dataset.limit);
             c.innerHTML = list.map((item, i) =>
                 `<a href="/portfolio.html" class="masonry-item reveal m-0" data-delay="${(i % 4) + 1}">
-                    <div class="art">${artwork(item.kind, L(item.title))}</div>
+                    <div class="art">${portfolioArtHTML(item)}</div>
                     <div class="ov"><span class="cat">${esc(item.category)}</span><h3>${esc(L(item.title))}</h3></div></a>`).join("");
         },
         process(c) {
@@ -221,7 +221,7 @@
                 `<button class="chip${i === 0 ? " is-active" : ""}" type="button" data-filter="${esc(cat)}">${esc(cat)}</button>`).join("") + `</div>`;
             const grid = `<div class="masonry reveal" data-gallery>` + window.PORTFOLIO.map((item) =>
                 `<div class="masonry-item" data-category="${esc(item.category)}" data-title="${esc(L(item.title))}">
-                    <div class="art">${artwork(item.kind, L(item.title))}</div>
+                    <div class="art">${portfolioArtHTML(item)}</div>
                     <div class="ov"><span class="cat">${esc(item.category)}</span><h3>${esc(L(item.title))}</h3></div></div>`).join("") + `</div>`;
             c.innerHTML = cats + grid;
         },
@@ -633,10 +633,26 @@
     }
 
     /* ========================== Shop page ============================= */
+    function portfolioArtHTML(item) {
+        const src = item.image || (window.PORTFOLIO_IMAGES && item.id && window.PORTFOLIO_IMAGES[item.id]);
+        if (src) {
+            return `<img src="${esc(src)}" alt="${esc(L(item.title))}" loading="lazy" width="800" height="675">`;
+        }
+        return artwork(item.kind, L(item.title));
+    }
+
+    function productArtHTML(p) {
+        const src = p.image || (window.PRODUCT_IMAGES && window.PRODUCT_IMAGES[p.slug]);
+        if (src) {
+            return `<img src="${esc(src)}" alt="${esc(L(p.name))}" loading="lazy" width="800" height="600">`;
+        }
+        return artwork(p.kind || "card", L(p.name));
+    }
+
     function productCardHTML(p) {
         const price = p.variants[0].price;
         return `<a href="/product.html?slug=${esc(p.slug)}" class="product-card reveal">
-            <div class="prod-art">${artwork(p.kind || "card", L(p.name))}${p.badge ? `<span class="prod-badge">${esc(t("shop.badge." + p.badge))}</span>` : ""}</div>
+            <div class="prod-art">${productArtHTML(p)}${p.badge ? `<span class="prod-badge">${esc(t("shop.badge." + p.badge))}</span>` : ""}</div>
             <div class="prod-body">
                 <h3>${esc(L(p.name))}</h3>
                 <p class="prod-tag">${esc(L(p.tagline))}</p>
@@ -777,7 +793,7 @@
             </nav>
             <div class="product-detail">
                 <div class="prod-detail-art-wrap reveal">
-                    <div class="prod-detail-art">${artwork(p.kind || "card", L(p.name))}</div>
+                    <div class="prod-detail-art">${productArtHTML(p)}</div>
                 </div>
                 <div class="prod-detail-body reveal" data-delay="1">
                     <span class="prod-cat-label">${esc(t("shop.cats." + p.category))}</span>

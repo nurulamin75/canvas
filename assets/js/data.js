@@ -173,22 +173,41 @@
     ];
 
     /* ── Portfolio ── */
+    /* Royalty-free mockups (Unsplash / Pexels) — stored locally in /assets/img/portfolio/ */
+    window.PORTFOLIO_IMAGES = {
+        "haor-cafe-menu": "/assets/img/portfolio/haor-cafe-menu.jpg",
+        "sylhet-tech-cards": "/assets/img/portfolio/sylhet-tech-cards.jpg",
+        "green-agro-cartons": "/assets/img/portfolio/green-agro-cartons.jpg",
+        "bloom-gift-boxes": "/assets/img/portfolio/bloom-gift-boxes.jpg",
+        "annual-gala-invite": "/assets/img/portfolio/annual-gala-invite.jpg",
+        "surma-foods-labels": "/assets/img/portfolio/surma-foods-labels.jpg",
+        "bright-academy-certs": "/assets/img/portfolio/bright-academy-certs.jpg",
+        "expo-roll-up-stand": "/assets/img/portfolio/expo-roll-up-stand.jpg",
+        "corporate-profile": "/assets/img/portfolio/corporate-profile.jpg",
+        "festival-poster": "/assets/img/portfolio/festival-poster.jpg",
+        "conference-id-cards": "/assets/img/portfolio/conference-id-cards.jpg",
+        "boutique-stationery": "/assets/img/portfolio/boutique-stationery.jpg",
+        "wall-calendar": "/assets/img/portfolio/wall-calendar.jpg",
+        "startup-pitch-flyers": "/assets/img/portfolio/startup-pitch-flyers.jpg",
+        "premium-notebooks": "/assets/img/portfolio/premium-notebooks.jpg"
+    };
+
     window.PORTFOLIO = [
-        { title: { en: "Haor Cafe Menu", bn: "হাওর ক্যাফে মেনু" }, category: "Branding", kind: "menu" },
-        { title: { en: "Sylhet Tech Cards", bn: "সিলেট টেক কার্ড" }, category: "Business", kind: "card" },
-        { title: { en: "Green Agro Cartons", bn: "গ্রিন এগ্রো কার্টন" }, category: "Packaging", kind: "packaging" },
-        { title: { en: "Bloom Gift Boxes", bn: "ব্লুম গিফট বক্স" }, category: "Packaging", kind: "packaging" },
-        { title: { en: "Annual Gala Invite", bn: "বার্ষিক গালা নিমন্ত্রণ" }, category: "Events", kind: "invitation" },
-        { title: { en: "Surma Foods Labels", bn: "সুরমা ফুডস লেবেল" }, category: "Branding", kind: "sticker" },
-        { title: { en: "Bright Academy Certs", bn: "ব্রাইট একাডেমি সার্টিফিকেট" }, category: "Corporate", kind: "certificate" },
-        { title: { en: "Expo Roll-up Stand", bn: "এক্সপো রোল-আপ স্ট্যান্ড" }, category: "Marketing", kind: "banner" },
-        { title: { en: "Corporate Profile", bn: "কর্পোরেট প্রোফাইল" }, category: "Corporate", kind: "brochure" },
-        { title: { en: "Festival Poster", bn: "উৎসব পোস্টার" }, category: "Marketing", kind: "poster" },
-        { title: { en: "Conference ID Cards", bn: "কনফারেন্স আইডি কার্ড" }, category: "Events", kind: "idcard" },
-        { title: { en: "Boutique Stationery", bn: "বুটিক স্টেশনারি" }, category: "Branding", kind: "stationery" },
-        { title: { en: "2026 Wall Calendar", bn: "২০২৬ ওয়াল ক্যালেন্ডার" }, category: "Corporate", kind: "calendar" },
-        { title: { en: "Startup Pitch Flyers", bn: "স্টার্টআপ পিচ ফ্লায়ার" }, category: "Marketing", kind: "flyer" },
-        { title: { en: "Premium Notebooks", bn: "প্রিমিয়াম নোটবুক" }, category: "Corporate", kind: "notebook" }
+        { id: "haor-cafe-menu", title: { en: "Haor Cafe Menu", bn: "হাওর ক্যাফে মেনু" }, category: "Branding", kind: "menu" },
+        { id: "sylhet-tech-cards", title: { en: "Sylhet Tech Cards", bn: "সিলেট টেক কার্ড" }, category: "Business", kind: "card" },
+        { id: "green-agro-cartons", title: { en: "Green Agro Cartons", bn: "গ্রিন এগ্রো কার্টন" }, category: "Packaging", kind: "packaging" },
+        { id: "bloom-gift-boxes", title: { en: "Bloom Gift Boxes", bn: "ব্লুম গিফট বক্স" }, category: "Packaging", kind: "packaging" },
+        { id: "annual-gala-invite", title: { en: "Annual Gala Invite", bn: "বার্ষিক গালা নিমন্ত্রণ" }, category: "Events", kind: "invitation" },
+        { id: "surma-foods-labels", title: { en: "Surma Foods Labels", bn: "সুরমা ফুডস লেবেল" }, category: "Branding", kind: "sticker" },
+        { id: "bright-academy-certs", title: { en: "Bright Academy Certs", bn: "ব্রাইট একাডেমি সার্টিফিকেট" }, category: "Corporate", kind: "certificate" },
+        { id: "expo-roll-up-stand", title: { en: "Expo Roll-up Stand", bn: "এক্সপো রোল-আপ স্ট্যান্ড" }, category: "Marketing", kind: "banner" },
+        { id: "corporate-profile", title: { en: "Corporate Profile", bn: "কর্পোরেট প্রোফাইল" }, category: "Corporate", kind: "brochure" },
+        { id: "festival-poster", title: { en: "Festival Poster", bn: "উৎসব পোস্টার" }, category: "Marketing", kind: "poster" },
+        { id: "conference-id-cards", title: { en: "Conference ID Cards", bn: "কনফারেন্স আইডি কার্ড" }, category: "Events", kind: "idcard" },
+        { id: "boutique-stationery", title: { en: "Boutique Stationery", bn: "বুটিক স্টেশনারি" }, category: "Branding", kind: "stationery" },
+        { id: "wall-calendar", title: { en: "2026 Wall Calendar", bn: "২০২৬ ওয়াল ক্যালেন্ডার" }, category: "Corporate", kind: "calendar" },
+        { id: "startup-pitch-flyers", title: { en: "Startup Pitch Flyers", bn: "স্টার্টআপ পিচ ফ্লায়ার" }, category: "Marketing", kind: "flyer" },
+        { id: "premium-notebooks", title: { en: "Premium Notebooks", bn: "প্রিমিয়াম নোটবুক" }, category: "Corporate", kind: "notebook" }
     ];
 
     window.PORTFOLIO_CATEGORIES = ["All", "Business", "Corporate", "Events", "Packaging", "Branding", "Marketing"];
@@ -266,6 +285,32 @@
 
     /* ── Shop products ── */
     window.PRODUCT_CATEGORIES = ["all", "cards", "stationery", "marketing", "packaging", "events", "signage"];
+
+    /* Royalty-free mockups (Unsplash / Pexels) — stored locally in /assets/img/products/ */
+    window.PRODUCT_IMAGES = {
+        "business-cards": "/assets/img/products/business-cards.jpg",
+        "id-cards": "/assets/img/products/id-cards.jpg",
+        "loyalty-cards": "/assets/img/products/loyalty-cards.jpg",
+        "greeting-cards": "/assets/img/products/greeting-cards.jpg",
+        "letterheads": "/assets/img/products/letterheads.jpg",
+        "envelopes": "/assets/img/products/envelopes.jpg",
+        "notepads": "/assets/img/products/notepads.jpg",
+        "diaries": "/assets/img/products/diaries.jpg",
+        "flyers": "/assets/img/products/flyers.jpg",
+        "brochures": "/assets/img/products/brochures.jpg",
+        "posters": "/assets/img/products/posters.jpg",
+        "catalogues": "/assets/img/products/catalogues.jpg",
+        "product-boxes": "/assets/img/products/product-boxes.jpg",
+        "gift-boxes": "/assets/img/products/gift-boxes.jpg",
+        "stickers": "/assets/img/products/stickers.jpg",
+        "invitation-cards": "/assets/img/products/invitation-cards.jpg",
+        "certificates": "/assets/img/products/certificates.jpg",
+        "event-programs": "/assets/img/products/event-programs.jpg",
+        "table-cards": "/assets/img/products/table-cards.jpg",
+        "roll-up-banners": "/assets/img/products/roll-up-banners.jpg",
+        "pvc-banners": "/assets/img/products/pvc-banners.jpg",
+        "standees": "/assets/img/products/standees.jpg"
+    };
 
     window.PRODUCTS = [
         /* ── Cards ── */

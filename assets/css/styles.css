@@ -523,12 +523,28 @@ h4 {
    =================================================================== */
 
 .section-head {
-  max-width: 620px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
+  flex-wrap: wrap;
   margin-bottom: clamp(24px, 3vw, 40px);
 }
-.section-head.center {
-  margin-inline: auto;
-  text-align: center;
+.section-head h2,
+.section-head .h2 {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: min(100%, 16rem);
+}
+.section-head-cta {
+  flex-shrink: 0;
+  padding: 12px 14px;
+  font-size: 0.8rem;
+  gap: 6px;
+}
+.section-head-cta .icon {
+  width: 12px;
+  height: 12px;
 }
 .section-head .eyebrow {
   margin-bottom: 18px;

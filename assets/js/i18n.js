@@ -27,14 +27,14 @@ window.TRANSLATIONS = {
         },
         hero: {
             badge: "Professional printing made simple",
-            titleA: "Premium Printing for", titleHighlight: "Every", titleB: "Business",
+            titleA: "Premium Printing for", titleHighlight: "Every ", titleB: "Business",
             subtitle: "High-quality printing services for businesses, events, and personal projects across Bangladesh — from business cards to large-format banners.",
             trusted: "Trusted by 1,200+ clients across Bangladesh"
         },
         stats: { years: "Years of experience", projects: "Projects delivered", clients: "Happy clients", turnaround: "Average turnaround" },
         trusted: { title: "Trusted by brands & businesses across Bangladesh" },
         featured: {
-            title: "Popular picks from the shop.",
+            title: "Picks for you.",
             description: "Order online in a few clicks — pick a quantity, choose your finish, and pay cash on delivery."
         },
         services: {
