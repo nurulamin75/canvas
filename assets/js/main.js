@@ -488,6 +488,224 @@
         fillArt(document);
         applyI18n(document);
         initInteractions();
+        bootShop();
+        bootProduct();
+    }
+
+    /* ========================== Shop page ============================= */
+    function productCardHTML(p) {
+        const price = p.variants[0].price;
+        return `<a href="/product.html?slug=${esc(p.slug)}" class="card product-card reveal">
+            <div class="prod-art">${artwork(p.kind || "card", L(p.name))}${p.badge ? `<span class="prod-badge">${esc(t("shop.badge." + p.badge))}</span>` : ""}</div>
+            <div class="prod-body">
+                <h3>${esc(L(p.name))}</h3>
+                <p class="prod-tag">${esc(L(p.tagline))}</p>
+                <div class="prod-foot">
+                    <div class="prod-price"><small>${esc(t("common.priceFrom"))}</small>৳${esc(String(price))}</div>
+                    <span class="prod-arrow">${icon("arrow-up-right")}</span>
+                </div>
+            </div></a>`;
+    }
+
+    function bootShop() {
+        const grid = $("#shopGrid");
+        const catsEl = $("#shopCats");
+        const searchEl = $("#shopSearch");
+        if (!grid) return;
+
+        const products = window.PRODUCTS || [];
+        let activeCat = "all";
+        let searchQ = "";
+
+        function filterRender() {
+            const filtered = products.filter((p) => {
+                const matchCat = activeCat === "all" || p.category === activeCat;
+                const q = searchQ.toLowerCase();
+                const matchSearch = !q || L(p.name).toLowerCase().includes(q) || L(p.tagline).toLowerCase().includes(q);
+                return matchCat && matchSearch;
+            });
+            grid.innerHTML = filtered.length
+                ? filtered.map(productCardHTML).join("")
+                : `<p class="no-products">${esc(t("common.noProducts"))}</p>`;
+            fillArt(grid);
+            fillIcons(grid);
+            initReveal();
+        }
+
+        if (catsEl) {
+            catsEl.innerHTML = window.PRODUCT_CATEGORIES.map((cat) =>
+                `<button class="shop-cat${cat === "all" ? " is-active" : ""}" type="button" data-cat="${esc(cat)}">${esc(t("shop.cats." + cat))}</button>`
+            ).join("");
+            catsEl.addEventListener("click", (e) => {
+                const btn = e.target.closest(".shop-cat");
+                if (!btn) return;
+                activeCat = btn.dataset.cat;
+                $$(".shop-cat", catsEl).forEach((b) => b.classList.toggle("is-active", b.dataset.cat === activeCat));
+                filterRender();
+            });
+        }
+
+        if (searchEl) {
+            searchEl.addEventListener("input", (e) => { searchQ = e.target.value; filterRender(); });
+        }
+
+        filterRender();
+    }
+
+    /* ======================== Product detail page ==================== */
+    function bootProduct() {
+        const wrap = $("#productWrap");
+        if (!wrap) return;
+
+        const params = new URLSearchParams(location.search);
+        const slug = params.get("slug");
+        const products = window.PRODUCTS || [];
+        const p = products.find((x) => x.slug === slug);
+
+        if (!p) {
+            wrap.innerHTML = `<div class="section-inner" style="text-align:center;padding:80px 0;">
+                <p class="muted">Product not found. <a href="/shop.html">${esc(t("common.backToShop"))}</a></p></div>`;
+            return;
+        }
+
+        document.title = L(p.name) + " — Canvas Print";
+        const meta = document.querySelector('meta[name="description"]');
+        if (meta) meta.content = L(p.description);
+
+        let selectedVariant = p.variants[0];
+        let selectedOptions = {};
+        p.options.forEach((o) => { selectedOptions[o.id] = o.choices[0].id; });
+
+        function getOptionLabel() {
+            return p.options.map((o) => {
+                const ch = o.choices.find((c) => c.id === selectedOptions[o.id]);
+                return ch ? L(ch.label) : "";
+            }).join(", ");
+        }
+
+        function updatePriceDisplay() {
+            const el = $("#priceAmount");
+            if (el) el.textContent = "৳" + selectedVariant.price.toLocaleString();
+            const sumVariant = $("#sumVariant");
+            if (sumVariant) sumVariant.textContent = L(selectedVariant.label);
+            const sumOption = $("#sumOption");
+            if (sumOption) sumOption.textContent = getOptionLabel();
+            const formVariant = $("#formVariant");
+            if (formVariant) formVariant.value = L(selectedVariant.label);
+            const formOption = $("#formOption");
+            if (formOption) formOption.value = getOptionLabel();
+            const formPrice = $("#formPrice");
+            if (formPrice) formPrice.value = "৳" + selectedVariant.price.toLocaleString();
+        }
+
+        const variantHTML = `<div class="variant-group">
+            <label>${esc(t("common.selectVariant"))}</label>
+            <div class="variant-pills">${p.variants.map((v, i) =>
+                `<button class="variant-pill${i === 0 ? " is-active" : ""}" type="button" data-variant-idx="${i}">${esc(L(v.label))}</button>`
+            ).join("")}</div></div>`;
+
+        const optionsHTML = p.options.map((opt) =>
+            `<div class="option-group">
+                <label>${esc(L(opt.label))}</label>
+                <div class="option-pills">${opt.choices.map((ch, i) =>
+                    `<button class="option-pill${i === 0 ? " is-active" : ""}" type="button" data-opt-id="${esc(opt.id)}" data-choice-id="${esc(ch.id)}">${esc(L(ch.label))}</button>`
+                ).join("")}</div></div>`
+        ).join("");
+
+        wrap.innerHTML = `
+        <div class="section-inner">
+            <a href="/shop.html" class="eyebrow" style="text-decoration:none;margin-bottom:24px;display:inline-flex;align-items:center;gap:6px;">${icon("arrow-left")} <span>${esc(t("common.backToShop"))}</span></a>
+            <div class="product-detail">
+                <div class="prod-detail-art reveal">${artwork(p.kind || "card", L(p.name))}</div>
+                <div class="prod-detail-body reveal" data-delay="1">
+                    <span class="prod-cat-label">${esc(t("shop.cats." + p.category))}</span>
+                    <h1>${esc(L(p.name))}</h1>
+                    <p class="prod-tagline">${esc(L(p.tagline))}</p>
+                    <p class="prod-desc">${esc(L(p.description))}</p>
+                    <ul class="prod-feats">${p.features.map((f) =>
+                        `<li><span class="ico">${icon("check")}</span>${esc(f)}</li>`).join("")}</ul>
+                    ${variantHTML}
+                    ${optionsHTML}
+                    <div class="price-display">
+                        <span class="amount" id="priceAmount">৳${p.variants[0].price.toLocaleString()}</span>
+                        <div class="price-note">${esc(t("common.orderTotal"))}
+                            <span class="delivery-note">${esc(t("common.delivery"))}: ${esc(L(p.delivery))}</span>
+                        </div>
+                    </div>
+                    <a href="#orderForm" class="btn btn-primary">${esc(t("common.orderNow"))} ${icon("arrow-down")}</a>
+                </div>
+            </div>
+
+            <div class="order-form-section" id="orderForm">
+                <h2>${esc(t("shop.orderFormTitle"))}</h2>
+                <p class="sub">${esc(t("shop.orderFormSubtitle"))}</p>
+                <div class="order-summary-bar">
+                    <div class="sum-item"><span class="sum-label">${esc(t("common.orderProduct"))}</span><span class="sum-val">${esc(L(p.name))}</span></div>
+                    <div class="sum-item"><span class="sum-label">${esc(t("common.orderVariant"))}</span><span class="sum-val" id="sumVariant">${esc(L(p.variants[0].label))}</span></div>
+                    ${p.options.length ? `<div class="sum-item"><span class="sum-label">${esc(t("common.orderOption"))}</span><span class="sum-val" id="sumOption">${getOptionLabel()}</span></div>` : ""}
+                    <div class="sum-item"><span class="sum-label">${esc(t("common.orderTotal"))}</span><span class="sum-val" id="sumTotal">৳${p.variants[0].price.toLocaleString()}</span></div>
+                </div>
+                <div class="cod-notice">${icon("info")} <span>${esc(t("common.codNotice"))}</span></div>
+                <form class="form-grid" action="/forms/order.php" method="POST" novalidate data-ajax id="orderFormEl">
+                    <input type="hidden" name="product" value="${esc(L(p.name))}">
+                    <input type="hidden" name="variant" id="formVariant" value="${esc(L(p.variants[0].label))}">
+                    <input type="hidden" name="option" id="formOption" value="${getOptionLabel()}">
+                    <input type="hidden" name="price" id="formPrice" value="৳${p.variants[0].price.toLocaleString()}">
+                    <input type="text" name="_hp" style="display:none;" tabindex="-1" autocomplete="off">
+                    <div class="field">
+                        <label for="f-name">${esc(t("common.yourName"))} *</label>
+                        <input id="f-name" type="text" name="name" required autocomplete="name">
+                    </div>
+                    <div class="field">
+                        <label for="f-phone">${esc(t("common.yourPhone"))} *</label>
+                        <input id="f-phone" type="tel" name="phone" required autocomplete="tel">
+                    </div>
+                    <div class="field" style="grid-column:1/-1;">
+                        <label for="f-address">${esc(t("common.yourAddress"))} *</label>
+                        <input id="f-address" type="text" name="address" required autocomplete="street-address">
+                    </div>
+                    <div class="field" style="grid-column:1/-1;">
+                        <label for="f-notes">${esc(t("common.orderNotes"))}</label>
+                        <textarea id="f-notes" name="notes" rows="3"></textarea>
+                    </div>
+                    <div style="grid-column:1/-1;">
+                        <button type="submit" class="btn btn-primary">${esc(t("common.placeOrder"))} ${icon("arrow-right")}</button>
+                        <p class="form-msg" aria-live="polite"></p>
+                    </div>
+                </form>
+                <div class="success-panel" data-success style="display:none;text-align:center;padding:40px 0;">
+                    <div data-icon="check-circle" style="color:var(--forest);margin-bottom:12px;"></div>
+                    <h3>${esc(t("common.orderSuccess"))}</h3>
+                    <a href="/shop.html" class="btn btn-primary" style="margin-top:20px;">${esc(t("common.backToShop"))}</a>
+                </div>
+            </div>
+        </div>`;
+
+        const sumTotal = $("#sumTotal");
+
+        wrap.addEventListener("click", (e) => {
+            const vp = e.target.closest(".variant-pill");
+            if (vp) {
+                const idx = +vp.dataset.variantIdx;
+                selectedVariant = p.variants[idx];
+                $$(".variant-pill", wrap).forEach((b) => b.classList.toggle("is-active", b === vp));
+                if (sumTotal) sumTotal.textContent = "৳" + selectedVariant.price.toLocaleString();
+                updatePriceDisplay();
+            }
+            const op = e.target.closest(".option-pill");
+            if (op) {
+                const optId = op.dataset.optId;
+                selectedOptions[optId] = op.dataset.choiceId;
+                $$(".option-pill[data-opt-id='" + optId + "']", wrap).forEach((b) => b.classList.toggle("is-active", b === op));
+                updatePriceDisplay();
+            }
+        });
+
+        fillIcons(wrap);
+        fillArt(wrap);
+        applyI18n(wrap);
+        initReveal();
+        initForms();
     }
 
     /* ------------------------------ Boot ----------------------------- */
@@ -511,6 +729,8 @@
         applyI18n(document);
         bindLangToggle();
         initInteractions();
+        bootShop();
+        bootProduct();
     }
 
     if (document.readyState !== "loading") boot();

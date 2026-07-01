@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop — Canvas Print</title>
+    <meta name="description" content="Browse our full range of premium print products. Choose your quantity, select your options, and order online with cash on delivery.">
+    <link rel="canonical" href="https://canvasprintbd.com/shop.html">
+    <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#111113">
+    <script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Text:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+</head>
+<body>
+<a href="#main" class="sr-only">Skip to content</a>
+<div data-include="/partials/header.html"></div>
+
+<main id="main">
+    <section class="page-header">
+        <div class="container">
+            <div class="reveal">
+                <span class="eyebrow" data-i18n="shop.eyebrow"></span>
+                <h1 class="h1 text-balance" data-i18n="shop.pageTitle"></h1>
+                <p class="lede" data-i18n="shop.pageDesc"></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section--tight">
+        <div class="container">
+            <div class="shop-toolbar">
+                <div class="shop-search">
+                    <span class="s-ico" aria-hidden="true"><span data-icon="search"></span></span>
+                    <input id="shopSearch" type="search" placeholder="" data-i18n-attr="common.searchProducts:placeholder" aria-label="Search products">
+                </div>
+                <div class="shop-cats" id="shopCats" role="group" aria-label="Filter by category"></div>
+            </div>
+            <div class="product-grid" id="shopGrid" aria-live="polite"></div>
+        </div>
+    </section>
+</main>
+
+<div data-include="/partials/footer.html"></div>
+<a href="#" class="wa-float" data-wa aria-label="Chat on WhatsApp"><span data-icon="whatsapp"></span></a>
+
+<script src="/assets/js/artwork.js"></script>
+<script src="/assets/js/i18n.js"></script>
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>

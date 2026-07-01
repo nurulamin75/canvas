@@ -29,6 +29,7 @@
         { key: "home", href: "/" },
         { key: "about", href: "/about.html" },
         { key: "services", href: "/services.html" },
+        { key: "shop", href: "/shop.html" },
         { key: "portfolio", href: "/portfolio.html" },
         { key: "pricing", href: "/pricing.html" },
         { key: "faq", href: "/faq.html" },
@@ -234,6 +235,382 @@
         { product: { en: "Stickers", bn: "স্টিকার" }, spec: { en: "Per piece, die-cut vinyl", bn: "প্রতি পিস, ডাই-কাট ভিনাইল" }, from: "৳3" },
         { product: { en: "Packaging Box", bn: "প্যাকেজিং বক্স" }, spec: { en: "Per box, custom die-cut", bn: "প্রতি বক্স, কাস্টম ডাই-কাট" }, from: "৳45" },
         { product: { en: "Invitation Card", bn: "নিমন্ত্রণ কার্ড" }, spec: { en: "Per card, foil optional", bn: "প্রতি কার্ড, ফয়েল ঐচ্ছিক" }, from: "৳25" }
+    ];
+
+    window.PRODUCT_CATEGORIES = ["all", "cards", "stationery", "marketing", "packaging", "events", "signage"];
+
+    window.PRODUCTS = [
+        /* ── Cards ── */
+        { slug: "business-cards", category: "cards", kind: "card", badge: "popular",
+          name: { en: "Business Cards", bn: "বিজনেস কার্ড" },
+          tagline: { en: "First impressions, beautifully printed.", bn: "প্রথম ইমপ্রেশন সুন্দরভাবে প্রিন্ট করা।" },
+          description: { en: "Premium business cards on heavyweight stock. Available in matte, gloss, or soft-touch lamination with optional spot UV, foiling, and rounded corners.", bn: "ভারী স্টকে প্রিমিয়াম বিজনেস কার্ড। ম্যাট, গ্লস বা সফট-টাচ ল্যামিনেশনসহ। স্পট UV, ফয়েলিং ও রাউন্ড কর্নারও পাওয়া যায়।" },
+          features: ["300–600 GSM stock", "Matte / Gloss / Soft-touch", "Spot UV & foil options", "Rounded corners available"],
+          variants: [
+            { id: "100", label: { en: "100 pcs", bn: "১০০ পিস" }, price: 400 },
+            { id: "250", label: { en: "250 pcs", bn: "২৫০ পিস" }, price: 850 },
+            { id: "500", label: { en: "500 pcs", bn: "৫০০ পিস" }, price: 1400 },
+            { id: "1000", label: { en: "1,000 pcs", bn: "১,০০০ পিস" }, price: 2200 }
+          ],
+          options: [{ id: "finish", label: { en: "Finish", bn: "ফিনিশ" }, choices: [
+            { id: "matte", label: { en: "Matte", bn: "ম্যাট" } },
+            { id: "gloss", label: { en: "Gloss", bn: "গ্লস" } },
+            { id: "soft", label: { en: "Soft Touch", bn: "সফট টাচ" } }
+          ]}],
+          delivery: { en: "3–5 business days", bn: "৩–৫ কার্যদিবস" } },
+
+        { slug: "id-cards", category: "cards", kind: "idcard", badge: null,
+          name: { en: "ID Cards", bn: "আইডি কার্ড" },
+          tagline: { en: "Identity, professionally produced.", bn: "পরিচয়, পেশাদারভাবে তৈরি।" },
+          description: { en: "Durable PVC ID cards for organisations, schools, and events. Includes lanyards and holders on request.", bn: "প্রতিষ্ঠান, স্কুল ও ইভেন্টের জন্য টেকসই PVC আইডি কার্ড। অনুরোধে ল্যানিয়ার্ড ও হোল্ডারসহ।" },
+          features: ["PVC / paper options", "Lanyards & holders", "Variable data printing", "Same-day rush available"],
+          variants: [
+            { id: "10", label: { en: "10 pcs", bn: "১০ পিস" }, price: 350 },
+            { id: "25", label: { en: "25 pcs", bn: "২৫ পিস" }, price: 700 },
+            { id: "50", label: { en: "50 pcs", bn: "৫০ পিস" }, price: 1200 },
+            { id: "100", label: { en: "100 pcs", bn: "১০০ পিস" }, price: 2000 }
+          ],
+          options: [{ id: "material", label: { en: "Material", bn: "উপাদান" }, choices: [
+            { id: "pvc", label: { en: "PVC", bn: "PVC" } },
+            { id: "paper", label: { en: "Paper / Laminated", bn: "পেপার / ল্যামিনেটেড" } }
+          ]}],
+          delivery: { en: "2–3 business days", bn: "২–৩ কার্যদিবস" } },
+
+        { slug: "loyalty-cards", category: "cards", kind: "card", badge: null,
+          name: { en: "Loyalty Cards", bn: "লয়্যালটি কার্ড" },
+          tagline: { en: "Keep customers coming back.", bn: "গ্রাহকদের বারবার ফিরিয়ে আনুন।" },
+          description: { en: "Custom loyalty punch cards and reward cards for cafes, salons, and retail businesses. Printed on premium 350 GSM stock.", bn: "ক্যাফে, সেলন ও রিটেইল ব্যবসার জন্য কাস্টম লয়্যালটি পাঞ্চ কার্ড ও রিওয়ার্ড কার্ড।" },
+          features: ["350 GSM stock", "Matte or gloss finish", "Custom punch slots", "Bulk pricing available"],
+          variants: [
+            { id: "100", label: { en: "100 pcs", bn: "১০০ পিস" }, price: 500 },
+            { id: "250", label: { en: "250 pcs", bn: "২৫০ পিস" }, price: 1000 },
+            { id: "500", label: { en: "500 pcs", bn: "৫০০ পিস" }, price: 1700 }
+          ],
+          options: [{ id: "finish", label: { en: "Finish", bn: "ফিনিশ" }, choices: [
+            { id: "matte", label: { en: "Matte", bn: "ম্যাট" } },
+            { id: "gloss", label: { en: "Gloss", bn: "গ্লস" } }
+          ]}],
+          delivery: { en: "3–5 business days", bn: "৩–৫ কার্যদিবস" } },
+
+        { slug: "greeting-cards", category: "cards", kind: "invitation", badge: null,
+          name: { en: "Greeting Cards", bn: "গ্রিটিং কার্ড" },
+          tagline: { en: "Say it beautifully.", bn: "সুন্দরভাবে বলুন।" },
+          description: { en: "Personalised greeting cards for birthdays, Eid, weddings, and corporate occasions. Printed on thick premium card stock with envelope included.", bn: "জন্মদিন, ঈদ, বিয়ে ও কর্পোরেট অনুষ্ঠানের জন্য ব্যক্তিগতকৃত গ্রিটিং কার্ড।" },
+          features: ["A6 / A5 sizes", "Envelope included", "Matte or gloss", "Custom messages"],
+          variants: [
+            { id: "25", label: { en: "25 pcs", bn: "২৫ পিস" }, price: 600 },
+            { id: "50", label: { en: "50 pcs", bn: "৫০ পিস" }, price: 1000 },
+            { id: "100", label: { en: "100 pcs", bn: "১০০ পিস" }, price: 1700 }
+          ],
+          options: [{ id: "size", label: { en: "Size", bn: "সাইজ" }, choices: [
+            { id: "a6", label: { en: "A6 (small)", bn: "A6 (ছোট)" } },
+            { id: "a5", label: { en: "A5 (medium)", bn: "A5 (মাঝারি)" } }
+          ]}],
+          delivery: { en: "3–5 business days", bn: "৩–৫ কার্যদিবস" } },
+
+        /* ── Stationery ── */
+        { slug: "letterheads", category: "stationery", kind: "stationery", badge: null,
+          name: { en: "Letterheads", bn: "লেটারহেড" },
+          tagline: { en: "Stationery that means business.", bn: "ব্যবসার উপযোগী স্টেশনারি।" },
+          description: { en: "Professional branded letterheads on quality bond paper, perfectly aligned to your brand identity. Ideal for quotations, letters, and official communication.", bn: "মানসম্পন্ন বন্ড কাগজে পেশাদার ব্র্যান্ডেড লেটারহেড।" },
+          features: ["A4 bond paper", "80–100 GSM", "Brand-matched colour", "Watermark options"],
+          variants: [
+            { id: "100", label: { en: "100 sheets", bn: "১০০ শীট" }, price: 800 },
+            { id: "250", label: { en: "250 sheets", bn: "২৫০ শীট" }, price: 1500 },
+            { id: "500", label: { en: "500 sheets", bn: "৫০০ শীট" }, price: 2500 }
+          ],
+          options: [{ id: "paper", label: { en: "Paper weight", bn: "কাগজের ওজন" }, choices: [
+            { id: "80gsm", label: { en: "80 GSM", bn: "৮০ GSM" } },
+            { id: "100gsm", label: { en: "100 GSM", bn: "১০০ GSM" } }
+          ]}],
+          delivery: { en: "3–4 business days", bn: "৩–৪ কার্যদিবস" } },
+
+        { slug: "envelopes", category: "stationery", kind: "stationery", badge: null,
+          name: { en: "Envelopes", bn: "খাম" },
+          tagline: { en: "Deliver in style.", bn: "স্টাইলে পৌঁছে দিন।" },
+          description: { en: "Custom-printed envelopes in DL, A5, and A4 formats with full-colour branding inside and out. Self-seal and window options available.", bn: "DL, A5 ও A4 ফরম্যাটে কাস্টম-প্রিন্টেড খাম।" },
+          features: ["DL / A5 / A4", "Window & plain", "Self-seal available", "Full-colour print"],
+          variants: [
+            { id: "100", label: { en: "100 pcs", bn: "১০০ পিস" }, price: 1000 },
+            { id: "250", label: { en: "250 pcs", bn: "২৫০ পিস" }, price: 2000 },
+            { id: "500", label: { en: "500 pcs", bn: "৫০০ পিস" }, price: 3500 }
+          ],
+          options: [{ id: "size", label: { en: "Size", bn: "সাইজ" }, choices: [
+            { id: "dl", label: { en: "DL", bn: "DL" } },
+            { id: "a5", label: { en: "A5", bn: "A5" } },
+            { id: "a4", label: { en: "A4", bn: "A4" } }
+          ]}],
+          delivery: { en: "4–5 business days", bn: "৪–৫ কার্যদিবস" } },
+
+        { slug: "notepads", category: "stationery", kind: "notebook", badge: null,
+          name: { en: "Notepads", bn: "নোটপ্যাড" },
+          tagline: { en: "Everyday branded essentials.", bn: "প্রতিদিনের ব্র্যান্ডেড প্রয়োজন।" },
+          description: { en: "Custom branded notepads, perfect for corporate gifting and promotional giveaways. 50 or 100 sheets per pad, glued and padded.", bn: "কর্পোরেট গিফটিং ও প্রমোশনাল গিভঅ্যাওয়ের জন্য কাস্টম ব্র্যান্ডেড নোটপ্যাড।" },
+          features: ["50 or 100 sheets/pad", "Glued & backed", "A4 / A5 sizes", "Custom cover design"],
+          variants: [
+            { id: "25", label: { en: "25 pads", bn: "২৫ প্যাড" }, price: 2500 },
+            { id: "50", label: { en: "50 pads", bn: "৫০ প্যাড" }, price: 4500 },
+            { id: "100", label: { en: "100 pads", bn: "১০০ প্যাড" }, price: 8000 }
+          ],
+          options: [{ id: "size", label: { en: "Size", bn: "সাইজ" }, choices: [
+            { id: "a5", label: { en: "A5", bn: "A5" } },
+            { id: "a4", label: { en: "A4", bn: "A4" } }
+          ]}],
+          delivery: { en: "5–7 business days", bn: "৫–৭ কার্যদিবস" } },
+
+        { slug: "diaries", category: "stationery", kind: "notebook", badge: null,
+          name: { en: "Custom Diaries", bn: "কাস্টম ডায়েরি" },
+          tagline: { en: "Stay organised, stay branded.", bn: "সংগঠিত থাকুন, ব্র্যান্ডেড থাকুন।" },
+          description: { en: "Hardcover or softcover diaries with custom branding, ribbon markers, and your choice of ruling. Perfect for corporate year-end gifting.", bn: "হার্ডকভার বা সফটকভার ডায়েরি, কাস্টম ব্র্যান্ডিং ও রিবন মার্কারসহ।" },
+          features: ["Hard & soft cover", "Ribbon markers", "Custom ruling", "Branded covers"],
+          variants: [
+            { id: "25", label: { en: "25 pcs", bn: "২৫ পিস" }, price: 3750 },
+            { id: "50", label: { en: "50 pcs", bn: "৫০ পিস" }, price: 6500 },
+            { id: "100", label: { en: "100 pcs", bn: "১০০ পিস" }, price: 11000 }
+          ],
+          options: [{ id: "cover", label: { en: "Cover", bn: "কভার" }, choices: [
+            { id: "hard", label: { en: "Hardcover", bn: "হার্ডকভার" } },
+            { id: "soft", label: { en: "Softcover", bn: "সফটকভার" } }
+          ]}],
+          delivery: { en: "7–10 business days", bn: "৭–১০ কার্যদিবস" } },
+
+        /* ── Marketing ── */
+        { slug: "flyers", category: "marketing", kind: "flyer", badge: "popular",
+          name: { en: "Flyers", bn: "ফ্লায়ার" },
+          tagline: { en: "Spread the word with impact.", bn: "প্রভাব ফেলে বার্তা ছড়িয়ে দিন।" },
+          description: { en: "Vibrant single or double-sided flyers ideal for promotions, events, and announcements. Available in A4, A5, and DL sizes with crisp colour reproduction.", bn: "প্রোমোশন, ইভেন্ট ও ঘোষণার জন্য উজ্জ্বল এক বা দুই পাশের ফ্লায়ার।" },
+          features: ["A4 / A5 / DL sizes", "Single or double-sided", "Art paper & matte", "Bulk pricing tiers"],
+          variants: [
+            { id: "250", label: { en: "250 pcs", bn: "২৫০ পিস" }, price: 1500 },
+            { id: "500", label: { en: "500 pcs", bn: "৫০০ পিস" }, price: 2500 },
+            { id: "1000", label: { en: "1,000 pcs", bn: "১,০০০ পিস" }, price: 4000 },
+            { id: "2500", label: { en: "2,500 pcs", bn: "২,৫০০ পিস" }, price: 8500 }
+          ],
+          options: [{ id: "size", label: { en: "Size", bn: "সাইজ" }, choices: [
+            { id: "a5", label: { en: "A5", bn: "A5" } },
+            { id: "a4", label: { en: "A4", bn: "A4" } },
+            { id: "dl", label: { en: "DL", bn: "DL" } }
+          ]}],
+          delivery: { en: "2–4 business days", bn: "২–৪ কার্যদিবস" } },
+
+        { slug: "brochures", category: "marketing", kind: "brochure", badge: null,
+          name: { en: "Brochures", bn: "ব্রোশিওর" },
+          tagline: { en: "Tell your story, fold by fold.", bn: "ভাঁজে ভাঁজে আপনার গল্প বলুন।" },
+          description: { en: "Bi-fold, tri-fold, and multi-page brochures with precise folding and binding. Perfect for catalogues, company profiles, and event programmes.", bn: "বাই-ফোল্ড, ট্রাই-ফোল্ড ও মাল্টি-পেজ ব্রোশিওর, নিখুঁত ভাঁজ ও বাইন্ডিংসহ।" },
+          features: ["Bi-fold & tri-fold", "Saddle stitching", "Premium coated stock", "Custom page counts"],
+          variants: [
+            { id: "50", label: { en: "50 pcs", bn: "৫০ পিস" }, price: 1750 },
+            { id: "100", label: { en: "100 pcs", bn: "১০০ পিস" }, price: 3000 },
+            { id: "250", label: { en: "250 pcs", bn: "২৫০ পিস" }, price: 6500 }
+          ],
+          options: [{ id: "fold", label: { en: "Fold type", bn: "ফোল্ড ধরন" }, choices: [
+            { id: "bifold", label: { en: "Bi-fold", bn: "বাই-ফোল্ড" } },
+            { id: "trifold", label: { en: "Tri-fold", bn: "ট্রাই-ফোল্ড" } }
+          ]}],
+          delivery: { en: "3–5 business days", bn: "৩–৫ কার্যদিবস" } },
+
+        { slug: "posters", category: "marketing", kind: "poster", badge: null,
+          name: { en: "Posters", bn: "পোস্টার" },
+          tagline: { en: "Bold visuals that demand attention.", bn: "দৃষ্টি আকর্ষণকারী সাহসী ভিজ্যুয়াল।" },
+          description: { en: "High-impact posters in A3, A2, and A1 sizes on premium matte or gloss art paper. Ideal for events, promotions, and point-of-sale displays.", bn: "A3, A2 ও A1 সাইজে হাই-ইমপ্যাক্ট পোস্টার, প্রিমিয়াম ম্যাট বা গ্লস আর্ট পেপারে।" },
+          features: ["A3 / A2 / A1 sizes", "Matte or gloss", "150 GSM art paper", "Full bleed printing"],
+          variants: [
+            { id: "10", label: { en: "10 pcs", bn: "১০ পিস" }, price: 900 },
+            { id: "25", label: { en: "25 pcs", bn: "২৫ পিস" }, price: 1800 },
+            { id: "50", label: { en: "50 pcs", bn: "৫০ পিস" }, price: 3000 }
+          ],
+          options: [{ id: "size", label: { en: "Size", bn: "সাইজ" }, choices: [
+            { id: "a3", label: { en: "A3", bn: "A3" } },
+            { id: "a2", label: { en: "A2", bn: "A2" } },
+            { id: "a1", label: { en: "A1", bn: "A1" } }
+          ]}],
+          delivery: { en: "2–3 business days", bn: "২–৩ কার্যদিবস" } },
+
+        { slug: "catalogues", category: "marketing", kind: "brochure", badge: null,
+          name: { en: "Catalogues", bn: "ক্যাটালগ" },
+          tagline: { en: "Showcase your full range.", bn: "আপনার পূর্ণ পরিসর প্রদর্শন করুন।" },
+          description: { en: "Professionally bound product catalogues with saddle-stitching or perfect binding. Printed on premium coated stock for a luxury look and feel.", bn: "স্যাডেল-স্টিচিং বা পারফেক্ট বাইন্ডিংসহ পেশাদার বাউন্ড প্রোডাক্ট ক্যাটালগ।" },
+          features: ["Saddle or perfect binding", "Coated gloss / matte", "Custom page counts", "A5 / A4 sizes"],
+          variants: [
+            { id: "10", label: { en: "10 copies", bn: "১০ কপি" }, price: 2500 },
+            { id: "25", label: { en: "25 copies", bn: "২৫ কপি" }, price: 5500 },
+            { id: "50", label: { en: "50 copies", bn: "৫০ কপি" }, price: 9500 }
+          ],
+          options: [{ id: "binding", label: { en: "Binding", bn: "বাইন্ডিং" }, choices: [
+            { id: "saddle", label: { en: "Saddle stitch", bn: "স্যাডেল স্টিচ" } },
+            { id: "perfect", label: { en: "Perfect bind", bn: "পারফেক্ট বাইন্ড" } }
+          ]}],
+          delivery: { en: "5–7 business days", bn: "৫–৭ কার্যদিবস" } },
+
+        /* ── Packaging ── */
+        { slug: "product-boxes", category: "packaging", kind: "packaging", badge: null,
+          name: { en: "Product Boxes", bn: "প্রোডাক্ট বক্স" },
+          tagline: { en: "Unboxing worth remembering.", bn: "মনে রাখার মতো আনবক্সিং।" },
+          description: { en: "Custom product packaging and mono cartons with die-cutting, lamination, and structural design support. Tell us your product dimensions for a custom quote.", bn: "ডাই-কাটিং, ল্যামিনেশন ও স্ট্রাকচারাল ডিজাইনসহ কাস্টম প্রোডাক্ট প্যাকেজিং।" },
+          features: ["Custom die-cut", "Mono cartons", "Lamination & foiling", "Structural design help"],
+          variants: [
+            { id: "25", label: { en: "25 pcs", bn: "২৫ পিস" }, price: 1125 },
+            { id: "50", label: { en: "50 pcs", bn: "৫০ পিস" }, price: 2000 },
+            { id: "100", label: { en: "100 pcs", bn: "১০০ পিস" }, price: 3500 }
+          ],
+          options: [{ id: "finish", label: { en: "Finish", bn: "ফিনিশ" }, choices: [
+            { id: "matte", label: { en: "Matte lamination", bn: "ম্যাট ল্যামিনেশন" } },
+            { id: "gloss", label: { en: "Gloss lamination", bn: "গ্লস ল্যামিনেশন" } },
+            { id: "uv", label: { en: "Spot UV", bn: "স্পট UV" } }
+          ]}],
+          delivery: { en: "7–10 business days", bn: "৭–১০ কার্যদিবস" } },
+
+        { slug: "gift-boxes", category: "packaging", kind: "packaging", badge: null,
+          name: { en: "Gift Boxes", bn: "গিফট বক্স" },
+          tagline: { en: "Give gifts that leave an impression.", bn: "এমন উপহার দিন যা মনে থাকে।" },
+          description: { en: "Luxury rigid gift boxes with custom branding, ribbon, and tissue paper. Perfect for corporate gifting, hampers, and premium retail products.", bn: "কাস্টম ব্র্যান্ডিং, রিবন ও টিস্যু পেপারসহ লাক্সারি রিজিড গিফট বক্স।" },
+          features: ["Rigid board construction", "Custom print", "Ribbon & tissue included", "Luxury feel"],
+          variants: [
+            { id: "25", label: { en: "25 pcs", bn: "২৫ পিস" }, price: 3750 },
+            { id: "50", label: { en: "50 pcs", bn: "৫০ পিস" }, price: 6500 },
+            { id: "100", label: { en: "100 pcs", bn: "১০০ পিস" }, price: 11000 }
+          ],
+          options: [{ id: "size", label: { en: "Size", bn: "সাইজ" }, choices: [
+            { id: "small", label: { en: "Small (up to 20×15×8 cm)", bn: "ছোট (২০×১৫×৮ সেমি পর্যন্ত)" } },
+            { id: "medium", label: { en: "Medium (up to 30×25×12 cm)", bn: "মাঝারি (৩০×২৫×১২ সেমি পর্যন্ত)" } }
+          ]}],
+          delivery: { en: "7–10 business days", bn: "৭–১০ কার্যদিবস" } },
+
+        { slug: "stickers", category: "packaging", kind: "sticker", badge: "popular",
+          name: { en: "Stickers & Labels", bn: "স্টিকার ও লেবেল" },
+          tagline: { en: "Stick your brand everywhere.", bn: "আপনার ব্র্যান্ড সর্বত্র লাগান।" },
+          description: { en: "Die-cut stickers and product labels in gloss, matte, or transparent vinyl. Waterproof and fade-resistant, perfect for products and promotions.", bn: "গ্লস, ম্যাট বা স্বচ্ছ ভিনাইলে ডাই-কাট স্টিকার ও লেবেল। ওয়াটারপ্রুফ ও ফেইড-প্রতিরোধী।" },
+          features: ["Custom die-cut shape", "Vinyl & paper", "Waterproof options", "Roll or sheet format"],
+          variants: [
+            { id: "100", label: { en: "100 pcs", bn: "১০০ পিস" }, price: 300 },
+            { id: "250", label: { en: "250 pcs", bn: "২৫০ পিস" }, price: 625 },
+            { id: "500", label: { en: "500 pcs", bn: "৫০০ পিস" }, price: 1050 },
+            { id: "1000", label: { en: "1,000 pcs", bn: "১,০০০ পিস" }, price: 1800 }
+          ],
+          options: [{ id: "material", label: { en: "Material", bn: "উপাদান" }, choices: [
+            { id: "vinyl-gloss", label: { en: "Vinyl Gloss", bn: "ভিনাইল গ্লস" } },
+            { id: "vinyl-matte", label: { en: "Vinyl Matte", bn: "ভিনাইল ম্যাট" } },
+            { id: "clear", label: { en: "Clear / Transparent", bn: "ক্লিয়ার / স্বচ্ছ" } },
+            { id: "paper", label: { en: "Paper", bn: "পেপার" } }
+          ]}],
+          delivery: { en: "3–5 business days", bn: "৩–৫ কার্যদিবস" } },
+
+        /* ── Events ── */
+        { slug: "invitation-cards", category: "events", kind: "invitation", badge: null,
+          name: { en: "Invitation Cards", bn: "নিমন্ত্রণ কার্ড" },
+          tagline: { en: "Occasions deserve elegance.", bn: "অনুষ্ঠান চায় আভিজাত্য।" },
+          description: { en: "Wedding and event invitations with foil stamping, embossing, and luxury paper. Available with matching envelopes and RSVP inserts.", bn: "ফয়েল স্ট্যাম্পিং, এম্বসিং ও বিলাসবহুল কাগজে বিয়ে ও ইভেন্টের নিমন্ত্রণপত্র।" },
+          features: ["Foil & emboss options", "Luxury paper", "Custom envelopes", "RSVP inserts"],
+          variants: [
+            { id: "25", label: { en: "25 pcs", bn: "২৫ পিস" }, price: 625 },
+            { id: "50", label: { en: "50 pcs", bn: "৫০ পিস" }, price: 1100 },
+            { id: "100", label: { en: "100 pcs", bn: "১০০ পিস" }, price: 1900 },
+            { id: "200", label: { en: "200 pcs", bn: "২০০ পিস" }, price: 3200 }
+          ],
+          options: [{ id: "finish", label: { en: "Finish", bn: "ফিনিশ" }, choices: [
+            { id: "standard", label: { en: "Standard Matte", bn: "স্ট্যান্ডার্ড ম্যাট" } },
+            { id: "foil", label: { en: "Gold / Silver Foil", bn: "গোল্ড / সিলভার ফয়েল" } },
+            { id: "emboss", label: { en: "Embossed", bn: "এম্বসড" } }
+          ]}],
+          delivery: { en: "4–6 business days", bn: "৪–৬ কার্যদিবস" } },
+
+        { slug: "certificates", category: "events", kind: "certificate", badge: null,
+          name: { en: "Certificates", bn: "সার্টিফিকেট" },
+          tagline: { en: "Recognition, beautifully framed.", bn: "স্বীকৃতি, সুন্দরভাবে উপস্থাপিত।" },
+          description: { en: "Award and achievement certificates on premium textured stock. Available with optional gold foil seals, border designs, and A4 or A3 sizes.", bn: "প্রিমিয়াম টেক্সচারড স্টকে অ্যাওয়ার্ড ও অর্জন সার্টিফিকেট।" },
+          features: ["Textured premium stock", "Gold foil seals", "A4 & A3 sizes", "Frame-ready"],
+          variants: [
+            { id: "10", label: { en: "10 pcs", bn: "১০ পিস" }, price: 400 },
+            { id: "25", label: { en: "25 pcs", bn: "২৫ পিস" }, price: 875 },
+            { id: "50", label: { en: "50 pcs", bn: "৫০ পিস" }, price: 1500 },
+            { id: "100", label: { en: "100 pcs", bn: "১০০ পিস" }, price: 2600 }
+          ],
+          options: [{ id: "size", label: { en: "Size", bn: "সাইজ" }, choices: [
+            { id: "a4", label: { en: "A4", bn: "A4" } },
+            { id: "a3", label: { en: "A3", bn: "A3" } }
+          ]}],
+          delivery: { en: "3–5 business days", bn: "৩–৫ কার্যদিবস" } },
+
+        { slug: "event-programs", category: "events", kind: "brochure", badge: null,
+          name: { en: "Event Programs", bn: "ইভেন্ট প্রোগ্রাম" },
+          tagline: { en: "Guide your guests through the day.", bn: "অতিথিদের সারাদিন পথ দেখান।" },
+          description: { en: "Professionally printed event programs, order-of-service booklets, and wedding programs. Saddle-stitched with premium cover stock.", bn: "পেশাদারভাবে প্রিন্টেড ইভেন্ট প্রোগ্রাম, অর্ডার-অব-সার্ভিস বুকলেট ও বিয়ের প্রোগ্রাম।" },
+          features: ["Saddle stitch binding", "Premium cover stock", "A5 / A4 sizes", "Full colour"],
+          variants: [
+            { id: "50", label: { en: "50 copies", bn: "৫০ কপি" }, price: 1750 },
+            { id: "100", label: { en: "100 copies", bn: "১০০ কপি" }, price: 3000 },
+            { id: "250", label: { en: "250 copies", bn: "২৫০ কপি" }, price: 6500 }
+          ],
+          options: [{ id: "size", label: { en: "Size", bn: "সাইজ" }, choices: [
+            { id: "a5", label: { en: "A5", bn: "A5" } },
+            { id: "a4", label: { en: "A4", bn: "A4" } }
+          ]}],
+          delivery: { en: "4–6 business days", bn: "৪–৬ কার্যদিবস" } },
+
+        { slug: "table-cards", category: "events", kind: "card", badge: null,
+          name: { en: "Table Cards / Menu Cards", bn: "টেবিল কার্ড / মেনু কার্ড" },
+          tagline: { en: "Make every table count.", bn: "প্রতিটি টেবিল সুন্দর করুন।" },
+          description: { en: "Tent cards, table numbers, and restaurant menu cards on laminated or rigid stock. Built to withstand busy service while looking beautiful.", bn: "ল্যামিনেটেড বা রিজিড স্টকে টেন্ট কার্ড, টেবিল নম্বর ও রেস্তোরাঁর মেনু কার্ড।" },
+          features: ["Laminated finish", "Rigid & folding", "Spill-resistant", "Custom sizes"],
+          variants: [
+            { id: "25", label: { en: "25 pcs", bn: "২৫ পিস" }, price: 750 },
+            { id: "50", label: { en: "50 pcs", bn: "৫০ পিস" }, price: 1300 },
+            { id: "100", label: { en: "100 pcs", bn: "১০০ পিস" }, price: 2200 }
+          ],
+          options: [{ id: "type", label: { en: "Type", bn: "ধরন" }, choices: [
+            { id: "tent", label: { en: "Tent / Folded", bn: "টেন্ট / ফোল্ডেড" } },
+            { id: "flat", label: { en: "Flat / Single-sided", bn: "ফ্ল্যাট / এক পাশ" } }
+          ]}],
+          delivery: { en: "3–4 business days", bn: "৩–৪ কার্যদিবস" } },
+
+        /* ── Signage ── */
+        { slug: "roll-up-banners", category: "signage", kind: "banner", badge: null,
+          name: { en: "Roll-up Banners", bn: "রোল-আপ ব্যানার" },
+          tagline: { en: "Portable, premium, presentation-ready.", bn: "বহনযোগ্য, প্রিমিয়াম, উপস্থাপনার জন্য প্রস্তুত।" },
+          description: { en: "Retractable roll-up stands with high-resolution prints on premium PET film. Aluminium stand and carry bag included. Ideal for exhibitions and storefronts.", bn: "উচ্চ-রেজোলিউশন প্রিন্টসহ রিট্র্যাক্টেবল রোল-আপ স্ট্যান্ড। অ্যালুমিনিয়াম স্ট্যান্ড ও ক্যারি ব্যাগসহ।" },
+          features: ["80×200 cm standard", "Premium PET film", "Aluminium stand included", "Carry bag"],
+          variants: [
+            { id: "1", label: { en: "1 pc", bn: "১ পিস" }, price: 1800 },
+            { id: "2", label: { en: "2 pcs", bn: "২ পিস" }, price: 3200 },
+            { id: "5", label: { en: "5 pcs", bn: "৫ পিস" }, price: 7500 }
+          ],
+          options: [{ id: "size", label: { en: "Size", bn: "সাইজ" }, choices: [
+            { id: "80x200", label: { en: "80×200 cm (standard)", bn: "৮০×২০০ সেমি (স্ট্যান্ডার্ড)" } },
+            { id: "100x200", label: { en: "100×200 cm (wide)", bn: "১০০×২০০ সেমি (ওয়াইড)" } }
+          ]}],
+          delivery: { en: "5–7 business days", bn: "৫–৭ কার্যদিবস" } },
+
+        { slug: "pvc-banners", category: "signage", kind: "banner", badge: null,
+          name: { en: "PVC Banners", bn: "PVC ব্যানার" },
+          tagline: { en: "Built for the outdoors.", bn: "বাইরের পরিবেশের জন্য তৈরি।" },
+          description: { en: "Weather-resistant large-format PVC banners with eyelets and reinforced hemming. Priced per square foot — tell us your required size in the order notes.", bn: "আইলেট ও শক্তিশালী হেমিংসহ আবহাওয়া-প্রতিরোধী বড় আকারের PVC ব্যানার।" },
+          features: ["Weatherproof PVC", "Eyelets & hemming", "Any custom size", "Vivid solvent print"],
+          variants: [
+            { id: "10sqft", label: { en: "Up to 10 sq.ft", bn: "১০ বর্গফুট পর্যন্ত" }, price: 400 },
+            { id: "20sqft", label: { en: "Up to 20 sq.ft", bn: "২০ বর্গফুট পর্যন্ত" }, price: 750 },
+            { id: "50sqft", label: { en: "Up to 50 sq.ft", bn: "৫০ বর্গফুট পর্যন্ত" }, price: 1700 }
+          ],
+          options: [{ id: "finish", label: { en: "Material", bn: "উপাদান" }, choices: [
+            { id: "standard", label: { en: "Standard PVC (280 GSM)", bn: "স্ট্যান্ডার্ড PVC" } },
+            { id: "premium", label: { en: "Premium PVC (440 GSM)", bn: "প্রিমিয়াম PVC" } }
+          ]}],
+          delivery: { en: "3–5 business days", bn: "৩–৫ কার্যদিবস" } },
+
+        { slug: "standees", category: "signage", kind: "banner", badge: null,
+          name: { en: "Standees / Cut-outs", bn: "স্ট্যান্ডি / কাট-আউট" },
+          tagline: { en: "Life-size presence, anywhere.", bn: "যেকোনো জায়গায় জীবন্ত উপস্থিতি।" },
+          description: { en: "Full-colour life-size standees and shaped cut-outs printed on rigid foam board or correx. Perfect for photo booths, events, and retail displays.", bn: "ফোম বোর্ড বা করেক্সে ফুল-কালার লাইফ-সাইজ স্ট্যান্ডি ও শেপড কাট-আউট।" },
+          features: ["Rigid foam board", "Full colour", "Custom shapes", "Self-standing base"],
+          variants: [
+            { id: "1", label: { en: "1 pc", bn: "১ পিস" }, price: 2200 },
+            { id: "2", label: { en: "2 pcs", bn: "২ পিস" }, price: 4000 },
+            { id: "5", label: { en: "5 pcs", bn: "৫ পিস" }, price: 9000 }
+          ],
+          options: [{ id: "board", label: { en: "Board type", bn: "বোর্ড ধরন" }, choices: [
+            { id: "foam", label: { en: "Foam board", bn: "ফোম বোর্ড" } },
+            { id: "correx", label: { en: "Correx / Fluted board", bn: "করেক্স / ফ্লুটেড বোর্ড" } }
+          ]}],
+          delivery: { en: "4–6 business days", bn: "৪–৬ কার্যদিবস" } }
     ];
 
     window.FOOTER_GROUPS = [

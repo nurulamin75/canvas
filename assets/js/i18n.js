@@ -1,13 +1,21 @@
 /* Canvas Print — client-side i18n dictionary (English + Bangla). */
 window.TRANSLATIONS = {
     en: {
-        nav: { home: "Home", about: "About", services: "Services", portfolio: "Portfolio", pricing: "Pricing", faq: "FAQ", contact: "Contact" },
+        nav: { home: "Home", about: "About", services: "Services", shop: "Shop", portfolio: "Portfolio", pricing: "Pricing", faq: "FAQ", contact: "Contact" },
         common: {
             getQuote: "Get a Quote", viewServices: "View Services", allServices: "All services",
             fullPortfolio: "Full portfolio", contactUs: "Contact Us", requestQuote: "Request a Quote",
             startingFrom: "Starting from", from: "From", theme: "Toggle theme", menu: "Menu", close: "Close",
             backHome: "Back to home", sendMessage: "Send message", submitRequest: "Submit request",
-            continue: "Continue", back: "Back", talkToSales: "Talk to Sales", subscribe: "Subscribe"
+            continue: "Continue", back: "Back", talkToSales: "Talk to Sales", subscribe: "Subscribe",
+            browseShop: "Browse Shop", orderNow: "Order Now", placeOrder: "Place Order", selectVariant: "Select quantity / size",
+            yourName: "Your Name", yourPhone: "Phone Number", yourAddress: "Delivery Address", orderNotes: "Notes (optional)",
+            orderProduct: "Product", orderVariant: "Quantity / Size", orderOption: "Option", orderTotal: "Estimated Total",
+            codNotice: "Payment: Cash on Delivery. We'll confirm your order by phone before dispatch.",
+            orderSuccess: "Order placed! We'll call you to confirm within a few hours.", orderError: "Something went wrong. Please try again or WhatsApp us.",
+            delivery: "Estimated delivery", priceFrom: "Starting from", allCategories: "All",
+            viewProduct: "View details", backToShop: "Back to shop", searchProducts: "Search products…",
+            noProducts: "No products found."
         },
         hero: {
             badge: "Premium printing in Sunamganj, Bangladesh",
@@ -63,6 +71,14 @@ window.TRANSLATIONS = {
         cta: {
             title: "Let’s print something amazing.",
             description: "Tell us about your project and we’ll send a tailored quote within hours. No commitment, no pressure."
+        },
+        shop: {
+            eyebrow: "Order online", title: "Browse & order with ease.",
+            description: "Choose your product, pick your quantity, and place your order in minutes. We'll confirm by phone and deliver to your door.",
+            pageTitle: "Our product catalogue.", pageDesc: "Browse all print products, select your size and quantity, and place an order directly. Payment is cash on delivery.",
+            cats: { all: "All", cards: "Cards", stationery: "Stationery", marketing: "Marketing", packaging: "Packaging", events: "Events", signage: "Signage" },
+            badge: { popular: "Popular" },
+            orderFormTitle: "Place your order", orderFormSubtitle: "Fill in your details and we'll confirm your order by phone."
         },
         footer: {
             blurb: "Premium printing solutions for businesses, events, and personal projects across Bangladesh.",
@@ -124,13 +140,21 @@ window.TRANSLATIONS = {
     },
 
     bn: {
-        nav: { home: "হোম", about: "আমাদের সম্পর্কে", services: "সেবাসমূহ", portfolio: "পোর্টফোলিও", pricing: "মূল্য", faq: "জিজ্ঞাসা", contact: "যোগাযোগ" },
+        nav: { home: "হোম", about: "আমাদের সম্পর্কে", services: "সেবা", shop: "শপ", portfolio: "পোর্টফোলিও", pricing: "মূল্য", faq: "জিজ্ঞাসা", contact: "যোগাযোগ" },
         common: {
             getQuote: "কোটেশন নিন", viewServices: "সেবা দেখুন", allServices: "সব সেবা",
-            fullPortfolio: "সম্পূর্ণ পোর্টফোলিও", contactUs: "যোগাযোগ করুন", requestQuote: "কোটেশন চান",
-            startingFrom: "শুরু", from: "শুরু", theme: "থিম পরিবর্তন", menu: "মেনু", close: "বন্ধ",
+            fullPortfolio: "পূর্ণ পোর্টফোলিও", contactUs: "যোগাযোগ করুন", requestQuote: "কোটেশন চান",
+            startingFrom: "শুরু হচ্ছে", from: "থেকে", theme: "থিম পরিবর্তন", menu: "মেনু", close: "বন্ধ",
             backHome: "হোমে ফিরুন", sendMessage: "বার্তা পাঠান", submitRequest: "অনুরোধ জমা দিন",
-            continue: "পরবর্তী", back: "পূর্ববর্তী", talkToSales: "সেলসের সাথে কথা বলুন", subscribe: "সাবস্ক্রাইব"
+            continue: "পরবর্তী", back: "পেছনে", talkToSales: "বিক্রয় দলের সাথে কথা বলুন", subscribe: "সাবস্ক্রাইব",
+            browseShop: "শপ দেখুন", orderNow: "এখনই অর্ডার করুন", placeOrder: "অর্ডার দিন", selectVariant: "পরিমাণ / সাইজ বেছে নিন",
+            yourName: "আপনার নাম", yourPhone: "ফোন নম্বর", yourAddress: "ডেলিভারি ঠিকানা", orderNotes: "মন্তব্য (ঐচ্ছিক)",
+            orderProduct: "পণ্য", orderVariant: "পরিমাণ / সাইজ", orderOption: "অপশন", orderTotal: "আনুমানিক মোট",
+            codNotice: "পেমেন্ট: ক্যাশ অন ডেলিভারি। পাঠানোর আগে ফোনে অর্ডার নিশ্চিত করা হবে।",
+            orderSuccess: "অর্ডার দেওয়া হয়েছে! আমরা কয়েক ঘণ্টার মধ্যে ফোন করে নিশ্চিত করব।", orderError: "কিছু একটা ঠিক হয়নি। আবার চেষ্টা করুন বা WhatsApp করুন।",
+            delivery: "আনুমানিক ডেলিভারি", priceFrom: "শুরুর মূল্য", allCategories: "সব",
+            viewProduct: "বিস্তারিত দেখুন", backToShop: "শপে ফিরুন", searchProducts: "পণ্য খুঁজুন…",
+            noProducts: "কোনো পণ্য পাওয়া যায়নি।"
         },
         hero: {
             badge: "সুনামগঞ্জ, বাংলাদেশে প্রিমিয়াম প্রিন্টিং",
@@ -186,6 +210,14 @@ window.TRANSLATIONS = {
         cta: {
             title: "চলুন দারুণ কিছু প্রিন্ট করি।",
             description: "আপনার প্রকল্প সম্পর্কে জানান, কয়েক ঘণ্টার মধ্যেই আমরা উপযুক্ত কোটেশন পাঠাব। কোনো বাধ্যবাধকতা নেই।"
+        },
+        shop: {
+            eyebrow: "অনলাইনে অর্ডার করুন", title: "সহজে ব্রাউজ করুন ও অর্ডার দিন।",
+            description: "পণ্য বেছে নিন, পরিমাণ নির্ধারণ করুন এবং কয়েক মিনিটে অর্ডার দিন। আমরা ফোনে নিশ্চিত করে দরজায় পৌঁছে দেব।",
+            pageTitle: "আমাদের পণ্য তালিকা।", pageDesc: "সব প্রিন্ট পণ্য ব্রাউজ করুন, সাইজ ও পরিমাণ বেছে সরাসরি অর্ডার দিন। পেমেন্ট ক্যাশ অন ডেলিভারি।",
+            cats: { all: "সব", cards: "কার্ড", stationery: "স্টেশনারি", marketing: "মার্কেটিং", packaging: "প্যাকেজিং", events: "ইভেন্ট", signage: "সাইনেজ" },
+            badge: { popular: "জনপ্রিয়" },
+            orderFormTitle: "আপনার অর্ডার দিন", orderFormSubtitle: "তথ্য পূরণ করুন, আমরা ফোনে অর্ডার নিশ্চিত করব।"
         },
         footer: {
             blurb: "বাংলাদেশজুড়ে ব্যবসা, অনুষ্ঠান ও ব্যক্তিগত প্রকল্পের জন্য প্রিমিয়াম প্রিন্টিং সমাধান।",
